@@ -1,0 +1,21 @@
+
+Standard Package – Growing Business
+For SMEs, SaaS, or mobile apps with moderate traffic
+
+
+| Service                              | Config                    | Est. Monthly Cost |
+| ------------------------------------ | ------------------------- | ----------------- |
+| EC2 (t3.medium, 2 vCPU, 4GB)         | 2 instances (AutoScaling) | **$70**           |
+| EBS                                  | 100 GB                    | **$10**           |
+| S3 Storage                           | 200 GB                    | **$4.6**          |
+| RDS (db.t3.medium, Multi-AZ enabled) | 1 instance                | **$90–100**       |
+| CloudFront (CDN)                     | 500 GB traffic            | **$40–45**        |
+| Route 53                             | 3 hosted zones            | **$3–5**          |
+| ELB (Application Load Balancer)      | 1                         | **$20–25**        |
+| ACM                                  | SSL                       | **Free**          |
+| CloudWatch + Alarms                  | Standard metrics          | **$10–15**        |
+| Backup & Snapshots                   | 200 GB                    | **$10–15**        |
+
+
+Total Infra Cost: ~$250–300 / month
+(Good for ~50k–100k monthly users)

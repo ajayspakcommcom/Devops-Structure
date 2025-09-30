@@ -1,0 +1,67 @@
+
+Professional Proposal
+    1. Introduction
+    2. Scope of Services
+    3. AWS Infrastructure Costing
+    4. Tanvora Professional Services (Terraform + Ansible)
+    5. Total Estimated Cost
+    6. Benefits to Client
+
+
+
+Tanvora Cloud Services Proposal
+
+    a. Introduction
+        1. Tanvora provides end-to-end AWS Cloud Solutions following industry-standard practices used by MNCs.
+        2. We use Terraform for infrastructure provisioning and Ansible for server/application configuration to ensure automation, reliability, and scalability for your business.
+
+    b. Scope of Services
+        We will provide:
+            1. AWS Infrastructure Setup (VPC, EC2, RDS, S3, Load Balancer, CloudFront, Route 53, Monitoring)
+            2. Secure Configuration (IAM, SSL via ACM, Security Groups, WAF if required)
+            3. Infrastructure as Code (Terraform) – repeatable, version-controlled infra deployment
+            4. Configuration Management (Ansible) – automated software installation, patching, deployments
+            5. Monitoring & Backup (CloudWatch, Snapshots, DR setup)
+            6. Ongoing Support & Optimization
+
+    c. AWS Infrastructure Costing (Mumbai Region)
+        | Package           | Ideal For                    | Est. Monthly AWS Cost |
+        | ----------------- | ---------------------------- | --------------------- |
+        | 🟢 **Basic**      | Small startup / MVP          | **$50–60**            |
+        | 🟡 **Standard**   | Growing business / SaaS apps | **$250–300**          |
+        | 🔴 **Enterprise** | Large scale / corporates     | **$1,400–1,600**      |
+
+        These costs are billed directly by AWS to your account. Tanvora ensures cost optimization using best practices (Reserved Instances, AutoScaling, Right-Sizing).
+
+    d. Tanvora Professional Services
+        | Service                                 | Cost Type | Price Range                             |
+        | --------------------------------------- | --------- | --------------------------------------- |
+        | **Initial Setup (Terraform + Ansible)** | One-time  | **$500 – $2,000** (based on complexity) |
+        | **Ongoing Management & Support**        | Monthly   | **20–30% of AWS infra cost**            |
+
+        Includes:
+            1. CI/CD pipeline integration
+            2. Regular updates to Terraform/Ansible scripts
+            3. 24x7 monitoring and alerting setup
+            4. Security patching & compliance audits
+            5. Monthly cost optimization reports
+
+
+    e. Total Estimated Cost (Example)
+        For a Standard Package client:
+            1. AWS Infra Cost → ~$300/month (paid directly to AWS)
+            2. Tanvora Setup Fee → $1,000 (one-time)
+            3. Tanvora Monthly Mgmt Fee (25%) → ~$75/month
+
+            Total First Month: ~$1,375
+            Ongoing Monthly: ~$375
+
+    f. Benefits to Client
+        1. Faster Deployment – New environments in minutes via Terraform
+        2. Zero Downtime Scaling – AutoScaling + Load Balancers
+        3. Secure by Design – IAM, encryption, SSL, WAF
+        4. Reduced AWS Bill – Continuous optimization by Tanvora
+        5. Enterprise Standard – Same practices used by MNCs worldwide
+        6. End-to-End Support – Infra + Config + Monitoring + Cost Control
+
+    

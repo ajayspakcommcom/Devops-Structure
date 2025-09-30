@@ -1,0 +1,11 @@
+1. SQS / SNS / EventBridge
+    a. Decouple systems with messaging.
+    b. Example: Flipkart → Payment Service → SQS → Notification Service → SNS sends SMS.
+
+2. Step Functions
+    a. Orchestrates workflows.
+    b. Example: Loan approval workflow → validate docs → run credit check → approve.
+
+3. Kinesis
+    a. Real-time streaming.
+    b. Example: Swiggy tracks rider location in real time with Kinesis.

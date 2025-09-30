@@ -1,0 +1,13 @@
+
+1. ACM (AWS Certificate Manager)
+    Free SSL/TLS. Used for securing apps with HTTPS.
+
+2. KMS (Key Management Service)
+    Manages encryption keys. Corporates encrypt data for compliance (HIPAA, GDPR).
+
+3. WAF (Web Application Firewall) & Shield
+    a. Protect apps from DDoS, SQL injection, XSS.
+    b. Example: E-commerce protects checkout APIs using WAF.
+
+4. Secrets Manager / Parameter Store
+    Store API keys, DB passwords securely. No hardcoding in apps.

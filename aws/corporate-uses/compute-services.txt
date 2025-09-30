@@ -1,0 +1,19 @@
+
+1. EC2 (Elastic Compute Cloud)
+    a. Virtual servers. Corporates run web apps, APIs, SAP servers, or batch jobs.
+    b. Example: Banks run internet banking apps on EC2 clusters.
+
+
+2. ECS / EKS (Containers)
+    a. Used for microservices. Instead of one big app, corporates split it into small services (login, payment, notification).
+    b. Example: E-commerce giants like Flipkart/Amazon use EKS to run thousands of containerized microservices.
+
+3. AWS Lambda (Serverless)
+    a. No servers to manage. Pay only for usage.
+    b. Example: When a user uploads a photo, Lambda auto-resizes it in background.
+
+4. Elastic Beanstalk / App Runner
+    a. For fast app deployment without deep infra knowledge.
+    b. Example: A startup launches a Node.js app in hours instead of days.
+
+    

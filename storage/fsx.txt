@@ -1,0 +1,77 @@
+Amazon FSx (File System Service) – Key Pointers
+
+a. What is FSx?
+    1. Amazon FSx is a managed file storage service that provides high-performance file systems based on well-known enterprise file systems.
+    2. Unlike S3 (object storage) and EFS (NFS-based file system), FSx is for workloads that need Windows, Lustre, NetApp, or OpenZFS compatibility.
+
+
+b. Types of FSx (Choose Based on Workload)
+    1. FSx for Windows File Server
+        a. Fully managed Windows file system (SMB, NTFS).
+        b. Used in enterprise apps, Windows-based environments, Active Directory integration.
+        c. Example: Home directories, CRM/ERP apps, Microsoft workloads.
+
+    2. FSx for Lustre
+        a. High-performance file system for HPC, AI/ML, analytics, media processing.
+        b. Integrates with S3 (can link S3 bucket as data repository)
+
+    3. FSx for NetApp ONTAP
+        a. Enterprise-grade storage features: snapshots, clones, data tiering, replication.
+        b. Good for hybrid/multi-cloud setups.
+
+    4. FSx for OpenZFS
+        a. Based on ZFS, with support for snapshots, clones, compression.
+        b. Works well for Linux workloads needing advanced file featurbs.
+
+c. Deployment Options
+    1. Single AZ → lower cost, dev/test workloads.
+    2. Multi-AZ (HA) → production workloads, automatic failover.
+
+d. Performance
+    1. Choose storage type: SSD (high performance) or HDD (low-cost, throughput-heavy).
+    2. Throughput capacity defined at creation (MBps scale).
+    3. FSx for Lustre: sub-millisecond latency + hundreds of GB/s throughput.
+
+e. Networking & Access
+    1. FSx is deployed inside a VPC.
+    2. Needs subnets + security groups.
+    3. Access protocols:
+        a. Windows FSx → SMB.
+        b. Lustre → NFS/Posix.
+        c. NetApp → NFS, SMB, iSCSI.
+        d. ZFS → NFS/Posixd
+
+f. Security
+    1. Encryption at rest: Enabled with AWS KMS.
+    2. Encryption in transit: Supported (TLS/SMB).
+    3. IAM policies + file system ACLs (SMB, NFS, POSIX).
+    4. FSx for Windows integrates with Active Directory for user permissions.
+
+g. Backup & DR
+    1. Automatic daily backups (configurable retention).
+    2. Manual backups & snapshots supported.
+    3. Replication available (for ONTAP and ZFS)
+
+h. Monitoring
+    1. CloudWatch metrics (I/O, throughput, storage usage).
+    2. CloudTrail for access auditing.
+
+i. Cost Optimization
+    1. Choose right storage type (SSD vs HDD).
+    2. Use data tiering (ONTAP moves cold data to S3).
+    3. Automate backups & lifecycle policies.
+    4. Select single-AZ for dev/test, multi-AZ only for prod.
+
+j. Industry Standard Practices
+    1. Select FSx type based on workload (Windows ↔ SMB, Lustre ↔ HPC, ONTAP ↔ Enterprise features, ZFS ↔ Linux advanced).
+    2. Use multi-AZ deployment for production.
+    3. Enable encryption at rest + in transit.
+    4. Integrate with Active Directory (Windows FSx).
+    4. Use backups + monitoring for compliance.
+    5. Optimize with tiering & storage class choices.
+
+
+In short:
+    1. S3 → Object storage (apps, backups, websites).
+    2. EFS → Shared Linux file system (EC2/EKS).
+    3. FSx → High-performance, enterprise-grade file systems (Windows, HPC, hybrid cloud)3

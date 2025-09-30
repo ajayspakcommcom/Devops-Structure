@@ -1,0 +1,18 @@
+Basic Package – Small Startup / MVP
+For small apps, websites, or early-stage startups
+
+
+| Service                         | Config         | Est. Monthly Cost |
+| ------------------------------- | -------------- | ----------------- |
+| EC2 (t3.small, 2 vCPU, 2GB)     | 1 instance     | **$18**           |
+| EBS (General SSD)               | 30 GB          | **$3**            |
+| S3 Storage                      | 50 GB          | **$1.15**         |
+| RDS (db.t3.micro, Multi-AZ off) | 1 instance     | **$15–20**        |
+| CloudFront (CDN)                | 100 GB traffic | **$8–10**         |
+| Route 53 (Domain + DNS)         | 1 zone         | **$1–2**          |
+| ACM (SSL Certs)                 | Unlimited      | **Free**          |
+| CloudWatch Logs/Monitoring      | Basic          | **$2–3**          |
+
+
+Total Infra Cost: ~$50–60 / month
+(Good for up to ~5k–10k monthly users)

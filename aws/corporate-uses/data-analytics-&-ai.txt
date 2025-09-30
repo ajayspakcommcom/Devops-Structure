@@ -1,0 +1,22 @@
+
+1. Athena / Glue
+    a. Serverless queries & ETL pipelines for data.
+    b. Example: Marketing teams query S3 logs for customer insights.
+
+
+2. Redshift
+    a. Data warehouse for analytics.
+    b. Example: Retail companies analyze sales trends across stores.
+
+
+3. QuickSight
+    a. BI dashboards for management.
+    b. Example: CEOs view revenue dashboards powered by QuickSight.
+
+4. SageMaker
+    a. Train/deploy ML models.
+    b. Example: Insurance companies predict fraud using SageMaker ML.
+
+5. OpenSearch (Elasticsearch)
+    a. Search engine + log analytics.
+    b. Example: IT teams analyze app errors with OpenSearch dashboards.

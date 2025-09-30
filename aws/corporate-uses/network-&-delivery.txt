@@ -1,0 +1,15 @@
+
+1. Route 53
+    DNS + domain hosting. Used for routing traffic (app.com → EC2/ALB).
+
+2. CloudFront (CDN)
+    a. Delivers content worldwide with low latency.
+    b. Example: Hotstar streams cricket matches via CloudFront.
+
+3. Load Balancers (ALB/NLB)
+    a. Distribute traffic across servers.
+    b. Example: Flipkart uses ALB so millions of shoppers don’t overload one server.
+
+4. API Gateway
+    a. Manage APIs securely. Supports throttling, authentication, analytics.
+    b. Example: PayTM secures payment APIs via API Gateway.

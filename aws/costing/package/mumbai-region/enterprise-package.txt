@@ -1,0 +1,24 @@
+
+Enterprise Package – Large Scale / Production
+For corporates, ecommerce, video platforms, or high traffic apps
+
+
+| Service                                    | Config                    | Est. Monthly Cost |
+| ------------------------------------------ | ------------------------- | ----------------- |
+| EC2 (m5.large, 2 vCPU, 8GB)                | 4 instances (AutoScaling) | **$300–350**      |
+| EBS (High IOPS SSD)                        | 500 GB                    | **$50–60**        |
+| S3 Storage                                 | 1 TB                      | **$23**           |
+| RDS (db.m5.large, Multi-AZ + Read Replica) | 2 instances               | **$500–600**      |
+| ElastiCache (Redis cluster)                | 2 nodes                   | **$150–200**      |
+| CloudFront (CDN)                           | 2 TB traffic              | **$150–180**      |
+| Route 53                                   | 10 hosted zones           | **$10–15**        |
+| ALB (2 load balancers)                     |                           | **$50–60**        |
+| API Gateway                                | 5M requests               | **$15–20**        |
+| Lambda                                     | 2M requests               | **$1–2**          |
+| CloudWatch + Dashboards                    | Advanced monitoring       | **$50–80**        |
+| Backup & DR (Cross-region)                 | 2 TB                      | **$100–120**      |
+| WAF + Shield (Basic)                       | 1 app                     | **$40–50**        |
+
+
+Total Infra Cost: ~$1,400–1,600 / month
+(Good for 500k+ monthly users, multi-region HA setup)

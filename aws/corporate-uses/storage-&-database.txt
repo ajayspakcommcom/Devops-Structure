@@ -1,0 +1,24 @@
+
+1. S3 (Simple Storage Service)
+    a. Stores unlimited files (media, backups, logs). Used for video streaming, backups, ML datasets.
+    b. Example: Netflix stores movies on S3 and streams via CloudFront.
+
+
+2. EBS (Elastic Block Store)
+    Disk storage for EC2. Used for databases or apps needing fast read/write.
+
+3. EFS (Elastic File System)
+    a. Shared file system. Multiple servers read/write together.
+    b. Example: Corporate SAP systems store shared config on EFS.
+
+4. RDS (Relational Database Service)
+    a. Managed MySQL/PostgreSQL/Oracle/SQL Server. Used for ERP, HR, Finance apps.
+    b. Example: Banks run core transactional databases on RDS.
+
+5. DynamoDB
+    a. NoSQL database, super fast. Used for mobile apps, IoT, gaming, recommendation engines.
+    b. Example: Amazon’s shopping cart is powered by DynamoDB.
+
+6. ElastiCache (Redis/Memcached)
+    a. Used for caching frequently used data.
+    b. Example: Ola/Uber cache driver location in Redis to reduce DB load.

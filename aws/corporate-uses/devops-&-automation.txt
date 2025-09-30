@@ -1,0 +1,11 @@
+1. CodePipeline / CodeBuild / CodeDeploy
+    a. Used for CI/CD automation – testing, building, and deploying apps.
+    b. Example: Infosys deploys code to client apps automatically via pipelines.
+
+
+2. Infrastructure as Code (Terraform, CloudFormation, Ansible)
+    a. Automates infra setup.
+    b. Example: A new client’s environment (VPC, EC2, RDS) is ready in minutes.
+
+3. Monitoring Dashboards (CloudWatch + Grafana)
+    Visual monitoring for app health and performance.

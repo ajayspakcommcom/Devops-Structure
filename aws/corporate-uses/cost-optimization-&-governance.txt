@@ -1,0 +1,10 @@
+
+1. Trusted Advisor & Cost Explorer
+    a. Optimize usage, reduce bills.
+    b. Example: Show a client how moving to Savings Plans saves 30%.
+
+2. Budgets & Alerts
+    Finance teams get email/SMS when usage exceeds set budget.
+
+3. FinOps Governance
+    Helps corporates track & control AWS spend across departments.

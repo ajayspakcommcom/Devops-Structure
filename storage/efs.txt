@@ -1,0 +1,66 @@
+
+Key Pointers for Creating & Using Amazon EFS
+    a. Use Case
+        1. Shared file system that can be mounted on multiple EC2 instances, containers (ECS/EKS), or Lambda functions.
+        2. Typical use:
+            1. Web server shared storage (/var/www/html).
+            2. Centralized app config, logs, media files.
+            3. Machine Learning / Data workloads.
+
+    b. File System Type
+        1. Regional (default): Data is stored across multiple AZs for high durability.
+        2. One Zone: Stores data in a single AZ → cheaper but less resilient (used when cost matters more).
+
+    c. Performance Mode
+        1. General Purpose (default): Low latency, recommended for most apps (web, CMS, dev/test).
+        2. Max I/O: Higher throughput, higher latency, used for analytics, big data.
+
+    d. Throughput Mode
+        1. Bursting (default): Scales automatically with file size.
+        2. Provisioned: Fixed throughput for workloads with high demand (extra cost).
+        3. Elastic: Pay-per-use, scales up/down automatically (newer, cost-efficient).
+
+    e. Mount Targets (Network)
+        1. Bursting (default): Scales automatically with file size.
+        2. Provisioned: Fixed throughput for workloads with high demand (extra cost).
+        3. Elastic: Pay-per-use, scales up/down automatically (newer, cost-efficient).        
+
+    f. Mount Targets (Network)
+        1. Each EFS needs mount targets in every AZ where EC2/ECS/EKS will access it.
+        2. Security group controls inbound NFS (port 2049) access.
+        3. Usually attached inside a private subnet.
+
+    g. Encryption & Security
+        1. At rest: Enable encryption (AWS KMS).
+        2. In transit: Enable TLS for NFS.
+        3. Restrict mount target SG to trusted EC2/ECS only.
+        4. IAM + POSIX permissions control access.
+
+
+    h. Backup & Lifecycle
+        1. Enable AWS Backup for scheduled backups.
+        2. Use Lifecycle Management to automatically move files not accessed for 30 days → EFS Infrequent Access (IA) storage (saves up to 92% cost).        
+
+    i. Monitoring
+        1. Use CloudWatch metrics for throughput, I/O, burst credits.
+        2. Set alarms for burst credit depletion (important for performance).
+
+    j. Cost Optimization
+        1. Use EFS IA for old data.
+        2. Prefer One Zone for dev/test or non-critical workloads.
+        3. Avoid over-provisioned throughput unless predictable workload.
+
+    k. Integration
+        1. Mount via:
+            a. EC2 (Linux NFS mount).
+            b. ECS/EKS (with EFS CSI driver).
+            c. Lambda (for shared code/data).
+        2. Common pattern: Web apps → store uploads on EFS → serve via EC2/ECS.
+
+
+    l. Industry Standards
+        1. Always use encryption at rest + in transit.
+        2. Deploy multi-AZ mount targets for HA.
+        3. Enable lifecycle to IA for cost savings.
+        4. Control SG & IAM policies strictly.
+        5. Monitor throughput & bursting to avoid performance bottlenecks.

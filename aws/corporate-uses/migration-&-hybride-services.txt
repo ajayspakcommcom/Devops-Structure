@@ -1,0 +1,12 @@
+
+1. DMS (Database Migration Service)
+    Migrates Oracle/SQL → AWS RDS with minimal downtime.
+
+2. SMS (Server Migration Service)
+    Lift-and-shift corporate on-prem servers to AWS.
+
+3. Storage Gateway
+    Hybrid storage (on-prem + cloud).
+
+4. AWS Backup
+    Central backup solution for EC2, RDS, EFS, DynamoDB.

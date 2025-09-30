@@ -1,0 +1,74 @@
+tanvora-cloud/
+│
+├── terraform/                       # Infrastructure as Code (IaC)
+│   ├── environments/                # Client/Environment-specific
+│   │   ├── production/
+│   │   │   ├── main.tf
+│   │   │   ├── variables.tf
+│   │   │   ├── terraform.tfvars
+│   │   │   └── outputs.tf
+│   │   └── staging/
+│   │       ├── main.tf
+│   │       ├── variables.tf
+│   │       ├── terraform.tfvars
+│   │       └── outputs.tf
+│   │
+│   ├── modules/                     # Reusable Terraform modules
+│   │   ├── vpc/
+│   │   │   ├── main.tf
+│   │   │   ├── variables.tf
+│   │   │   └── outputs.tf
+│   │   ├── ec2/
+│   │   ├── rds/
+│   │   ├── s3/
+│   │   ├── cloudfront/
+│   │   ├── route53/
+│   │   ├── alb/
+│   │   ├── iam/
+│   │   └── monitoring/              # CloudWatch, Config, GuardDuty
+│   │
+│   └── global/                      # Provider & backend configs
+│       ├── provider.tf
+│       └── backend.tf               # Remote state (S3 + DynamoDB lock)
+│
+├── ansible/                         # Configuration Management
+│   ├── inventories/                 # Environment-specific inventories
+│   │   ├── production/
+│   │   │   ├── hosts.ini
+│   │   │   └── group_vars/
+│   │   │       ├── all.yml
+│   │   │       └── webservers.yml
+│   │   └── staging/
+│   │       ├── hosts.ini
+│   │       └── group_vars/
+│   │           └── all.yml
+│   │
+│   ├── roles/                       # Reusable roles
+│   │   ├── common/                  # Basic configs (users, updates, firewall)
+│   │   │   ├── tasks/main.yml
+│   │   │   ├── handlers/main.yml
+│   │   │   ├── templates/
+│   │   │   └── vars/main.yml
+│   │   ├── webserver/               # Nginx/Apache config
+│   │   │   ├── tasks/main.yml
+│   │   │   ├── handlers/main.yml
+│   │   │   ├── templates/index.html.j2
+│   │   │   └── vars/main.yml
+│   │   ├── app/                     # Deploy your Node.js/Next.js app
+│   │   ├── monitoring/              # Install CloudWatch agent, logs
+│   │   ├── database/                # DB hardening/config
+│   │   └── security/                # SSL, Fail2ban, WAF configs
+│   │
+│   ├── playbooks/                   # Entry point playbooks
+│   │   ├── site.yml                 # Run all roles
+│   │   ├── web.yml                  # Run only webserver + app
+│   │   └── db.yml                   # Run only DB configs
+│   │
+│   └── ansible.cfg                  # Global Ansible config
+│
+├── docs/                            # Documentation for clients/internal
+│   ├── architecture-diagrams/
+│   ├── service-catalog.md
+│   └── cost-estimates.md
+│
+└── README.md                        # Project overview

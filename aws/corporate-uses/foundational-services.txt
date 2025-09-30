@@ -1,0 +1,17 @@
+
+1. AWS Account Setup & Landing Zone
+    Corporates create multiple accounts (e.g., Dev, QA, Prod) for better isolation, billing, and compliance. Helps IT teams avoid mixing workloads.
+
+
+2. VPC (Virtual Private Cloud)
+    Used to create secure, private networks in the cloud. Corporates set up public subnets (for apps accessible to users) and private subnets (for databases, internal apps).
+
+
+3. IAM (Identity & Access Management)
+    Ensures employees, apps, and vendors have minimum required permissions. E.g., HR team only sees payroll data, developers can’t touch billing.
+
+4. Monitoring & Logging (CloudWatch, CloudTrail, Config, GuardDuty)
+    a. CloudWatch → app & infra monitoring (CPU, memory, logs).
+    b. CloudTrail → audit logs of who did what.
+    c. Config → ensures compliance (e.g., no open S3 buckets).
+    d. GuardDuty → threat detection, alerts for attacks.
