@@ -1,0 +1,54 @@
+
+Amazon S3 Glacier – Key Pointers
+
+    a. What is it?
+        1. Low-cost archival storage in S3 for data you don’t need to access often.
+        2. Designed for compliance, backups, archives, and disaster recovery.
+        3. Costs much lower than S3 Standard/IA but retrieval times are slower3
+
+    b. Glacier Storage Classes
+        Amazon provides 3 Glacier classes (you choose when setting lifecycle rules):
+            1. S3 Glacier Instant Retrieval
+                a. Millisecond retrieval, lower cost than Standard-IA.
+                b. Best for archives accessed a few times a year but need quick access
+            2. S3 Glacier Flexible Retrieval (classic Glacier)
+                a. Cheapest for archives with occasional access.
+                b. Retrieval: minutes to hours (Expedited, Standard, Bulk options)
+            3. S3 Glacier Deep Archive
+                a. Lowest-cost storage in AWS.
+                b. Retrieval in hours (12–48 hrs).
+                c. Best for compliance/regulatory data that must be kept for 7–10+ years.
+
+    c. How You Use It
+        1. You don’t create a separate Glacier bucket.
+        2. Instead, you:
+            a. Create an S3 bucket.
+            b. Apply Lifecycle policies to transition objects → Glacier (Instant, Flexible, or Deep Archive).
+            c. Retrieve when needed (via S3 console/SDK/CLI).
+    
+    d. Retrieval Options
+        1. Expedited: 1–5 minutes (costlier).
+        2. Standard: 3–5 hours.
+        3. Bulk: 5–12 hours, cheapest.
+        4. (Instant Retrieval = milliseconds)
+
+    
+    e. Pricing Model
+        1. Very cheap storage (as low as $1/TB/month in Deep Archive).
+        2. Retrieval costs extra (per GB + per request).
+        3. Minimum storage duration charge
+            a. Glacier Instant: 90 days.
+            b. Glacier Flexible: 90 days.
+            c. Glacier Deep Archive: 180 days
+
+    f. Security
+        Same as S3:
+            1. Encryption at rest (SSE-S3 or SSE-KMS).
+            2. Access controlled by IAM policies, bucket policies.
+
+    g. Industry Standards
+    ✅1. Use Glacier Instant Retrieval for data that must be archived but occasionally queried (logs, compliance reports).
+    ✅2. Use Glacier Flexible for infrequent restore needs (legal, research, backups).
+    ✅3. Use Deep Archive for 7–10+ year compliance retention (banking, healthcare, government).
+    ✅4. Always combine with Lifecycle Policies (automatic transition).
+    ✅5. Monitor retrieval costs → retrieval is the “trap” if not planned.

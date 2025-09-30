@@ -1,0 +1,72 @@
+AWS Storage Gateway – Key Pointers
+
+    a. What is it?
+        1. A hybrid cloud storage service that lets you use AWS storage (S3, Glacier, EBS, FSx) from on-premises applications.
+        2. Runs as a virtual appliance (VMware/Hyper-V) or as a hardware appliance.
+        3. Bridges on-premises data centers ↔ AWS cloud storage.
+
+
+    b. Types of Storage Gateway
+        AWS provides 3 main gateway types:
+
+        1. File Gateway
+            a. Exposes a file system (NFS/SMB) to on-prem apps.
+            b. Data stored in S3 (optionally tiered to Glacier).
+            c. Metadata & cached data kept locally for performance.
+        ✅  d. Use case: Backup files, archive documents, share drives to AWS.
+
+        2. Volume Gateway
+            a. Presents block storage (iSCSI volumes) to on-prem apps.
+            b. Two modes:
+                1. Cached volumes → frequently accessed data kept locally, rest in S3.
+                2. Stored volumes → all data kept on-prem, asynchronously backed up to S3.
+            c. Use case: Database backups, disaster recovery.
+
+        3. Tape Gateway
+            a. Virtual tape library (VTL) for backup software.
+            b. Replaces physical tape backup with S3 + Glacier.
+        ✅  c. Use case: Companies using old tape libraries can migrate to AWS without changing backup tools.
+
+    c. Security
+        a. Data encrypted at rest (SSE-S3/KMS) and in transit (TLS).
+        b. IAM & bucket policies control access.
+
+    d. Integration
+        1. Integrates with:
+            a. S3 (Standard, IA, Glacier, Deep Archive).
+            b. EBS snapshots (for volume gateway).
+            c. Glacier/Deep Archive (for tape backups).
+            d. Backup software (Veeam, Veritas, Commvault).
+
+    f. Monitoring
+        1. CloudWatch metrics (throughput, I/O ops).
+        2. CloudTrail for auditing API calls.
+
+    g. Cost Model
+        1. Pay for:
+            a. Gateway appliance usage (per GB stored in AWS).
+            b. Storage in S3/Glacier.
+            c. Data transfer (if crossing regions).
+        2. No upfront costs — software appliance is free, but storage usage billed.
+
+    h. Industry Standards
+       1. File Gateway → for companies moving file shares (home directories, backups) to AWS.
+    ✅ 2. Volume Gateway → for block storage backup/DR.
+    ✅ 3. Tape Gateway → for replacing legacy tape libraries (very common in banking & government).
+    ✅ 4. Always integrate with lifecycle policies (move older backups → Glacier/Deep Archive).
+    ✅ 5. Use CloudWatch to monitor cache hit ratio (important for performance).
+
+    i. Typical Corporate Use Cases
+        1. Banking: Replace physical tapes → Tape Gateway → Glacier.
+        2. Healthcare: Store medical images via File Gateway → S3.
+        3. Manufacturing: Local apps write to block volumes → Volume Gateway → backup in AWS.
+        4. Media: File Gateway for storing large video files, auto-tiered to Glacier.
+
+    j. Summary:
+        AWS Storage Gateway is the bridge between on-premises data and AWS storage.
+            1. File Gateway = NFS/SMB → S3.
+            2. Volume Gateway = iSCSI volumes → S3/EBS snapshots.
+            3. Tape Gateway = Virtual tapes → S3/Glacier.
+
+
+        
