@@ -74,4 +74,4 @@ j. Industry Standard Practices
 In short:
     1. S3 → Object storage (apps, backups, websites).
     2. EFS → Shared Linux file system (EC2/EKS).
-    3. FSx → High-performance, enterprise-grade file systems (Windows, HPC, hybrid cloud)3
+    3. FSx → High-performance, enterprise-grade file systems (Windows, HPC, hybrid cloud)
