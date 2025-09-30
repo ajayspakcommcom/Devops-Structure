@@ -1,0 +1,76 @@
+AWS Backup – Key Pointers
+
+a. What is it?
+    1. A fully managed backup service.
+    2. Automates and centralizes backup of AWS resources → no need to write custom scripts.
+    3. Ensures compliance, disaster recovery, and business continuity.
+
+b. Supported AWS Services
+    AWS Backup can protect:
+        1. EBS volumes (block storage).
+        2. EC2 instances (via AMIs).
+        3. RDS databases (MySQL, PostgreSQL, Oracle, SQL Server, etc.).
+        4. DynamoDB tables.
+        5. S3 buckets.
+        6. EFS & FSx file systems.
+        7. Storage Gateway volumes.
+        8. DocumentDB, Neptune, etc.
+    (Coverage keeps expanding — it’s meant to be the “one-stop backup solution”).
+
+
+c. Backup Plan
+    You define backup plans (like policies):
+        1. Backup schedule (hourly, daily, weekly, etc.).
+        2. Backup window (when to run).
+        3. Retention rules (how long to keep).
+        4. Lifecycle (transition backups to cold storage like Glacier).
+
+d. Vaults
+    1. Backups are stored in Backup Vaults.
+    2. Vaults can use KMS encryption keys.
+    3. You can apply access policies (who can restore/delete).
+
+e. Cross-Region & Cross-Account Backup
+    a. Supports Cross-Region backup (disaster recovery).
+    b. Supports Cross-Account backup (multi-account setups in AWS Organizations).
+
+f. Restore
+    1. You can restore:
+        a. An EBS snapshot → back to a new EBS volume.
+        b. An RDS backup → new RDS instance.
+        c. DynamoDB backup → new table.
+    2. Works seamlessly across services.
+
+g. Compliance Features
+    1. Backup Audit Manager → tracks compliance against policies (like HIPAA, PCI-DSS).
+    2. Immutable backups (Vault Lock) → Write-Once-Read-Many (WORM).
+    3. Centralized logs via CloudTrail + CloudWatch.
+
+h. Cost Model
+    1. Pay for backup storage used (charged separately from original resource).
+    2. Pay for restore operations (per GB restored).
+    3. Pricing varies by storage tier:
+        a. Warm tier (frequent restores).
+        b. Cold tier (archival, Glacier-based).
+
+i. Industry Standards
+✅ 1. Create centralized backup policies across accounts using AWS Organizations.
+✅ 2. Use Vault Lock for compliance (prevents deletion/tampering).
+✅ 3. Store long-term backups in Glacier for cost efficiency.
+✅ 4. Use Cross-Region backups for DR.
+✅ 5. Enable Backup Audit Manager for reporting.
+
+h. Typical Corporate Use Cases
+    1. Banks & Financials → Meet compliance for 7–10 year data retention.
+    2. Healthcare → Daily RDS + S3 backups with encryption.
+    3. E-commerce → EBS + DynamoDB backups for HA/DR.
+    4. Government → Vault Lock for tamper-proof backups.
+
+
+i. Summary:
+    1. AWS Backup = centralized backup solution across AWS services.
+    2. Industry uses it for automation, compliance, DR, and cost optimization.
+    3. Best practices = cross-region + vault lock + lifecycle rules → Glacier.
+
+
+
