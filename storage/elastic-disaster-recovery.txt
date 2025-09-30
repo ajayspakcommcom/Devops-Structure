@@ -1,0 +1,59 @@
+AWS Elastic Disaster Recovery (DRS) – Key Pointers
+    a. What is it?
+        1. A disaster recovery (DR) service that lets you quickly recover applications from on-premises or cloud into AWS after an outage.
+        2. Replaces the older CloudEndure Disaster Recovery service.
+        3. Provides low-cost standby + fast failover in AWS.
+
+    b. How It Works
+        1. Install a lightweight agent on your on-premises servers (physical/virtual/cloud).
+        2. Agent continuously replicates data to AWS → stored in a staging area (low-cost EC2 + EBS).
+        3. In disaster, you launch recovery instances in minutes (EC2).
+        4. After disaster, you can fail back to on-prem.
+
+    c. Supported Sources
+        1. On-premises: VMware, Hyper-V, Physical servers.
+        2. Cloud: Azure, GCP, other AWS Regions/accounts.
+        3. OS: Windows + Linux servers.
+
+    d. Key Features
+        1. Continuous block-level replication (near real-time).
+        2. Point-in-time recovery (keep multiple recovery checkpoints).
+        3. Automated orchestration for failover/failback.
+        4. Test recovery drills anytime without disrupting production.
+
+    e. Recovery Time & Point Objectives
+        1. RPO (Recovery Point Objective): seconds.
+        2. RTO (Recovery Time Objective): minutes (launch new EC2 instances).
+        3. Industry standards for DR.
+    
+    f. Security
+        Data encrypted in transit (TLS) and at rest (EBS/KMS).
+        IAM roles control who can trigger failover.
+        Compliant with HIPAA, GDPR, SOC, etc.
+
+    g. Cost Model
+        1. Low-cost staging area: small EC2 + low-cost storage for replication.
+        2. Pay only for:
+            a. Staging infra + data replication.
+            b. Full-scale EC2/EBS only when disaster occurs or during drills.
+        3. Much cheaper than running duplicate infra 24/7.
+
+    h. Industry Standards
+    ✅ 1. Use multi-region DR (replicate workloads to a different AWS Region).
+    ✅ 2. Regularly perform DR drills using non-disruptive testing.
+    ✅ 3. Combine with AWS Backup + Recycle Bin for full data protection.
+    ✅ 4. Encrypt all replication with KMS keys.
+    ✅ 5. Automate failover playbooks with AWS Systems Manager.
+
+    i. Typical Corporate Use Cases
+        1. Banking/Finance → must meet regulatory RTO/RPO requirements.
+        2. Healthcare → ensure critical apps remain available.
+        3. E-commerce → avoid downtime during outages.
+        4. Manufacturing → protect against ransomware attacks.
+
+    j. Summary:
+        AWS Elastic Disaster Recovery = enterprise-grade failover system.
+            1. Replicates on-prem/cloud workloads into AWS.
+            2. Provides seconds RPO, minutes RTO.
+            3. Much cheaper than hot-standby because you pay full cost only during disaster or test.
+
