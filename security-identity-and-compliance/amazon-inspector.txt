@@ -1,0 +1,59 @@
+Amazon Inspector – Key Pointers
+
+    1. What is Amazon Inspector?
+        . A fully managed vulnerability management service.
+        . Continuously scans AWS workloads for:
+            . Software vulnerabilities (CVEs)
+            . Unintended network exposure
+            . Security best practice violations
+        . Covers EC2 instances, ECR container images, and Lambda functions.
+
+    2. Why Use It?
+        . Security audits are manual & slow — Inspector provides:
+            . Continuous, automated scanning (not just one-time).
+            . Integration with CVE database for real-time updates.
+            . Prioritized findings based on exploitability + environment context.
+        . Helps meet compliance (PCI DSS, HIPAA, ISO, etc.).
+
+    3. Core Features
+        . Automated Scans → triggered by deployments, new images, config changes.
+        . Context-Aware Scoring → ranks vulnerabilities based on severity, exposure, exploit availability.
+        . Coverage:
+            . EC2 → OS & application packages.
+            . ECR → container images (pre-deployment scans).
+            . Lambda → function code & dependencies.
+        . Integration → Security Hub, EventBridge, CloudWatch, SNS.
+        . Remediation guidance → suggested patches/config fixes.
+
+    4. Security
+        . Fully managed by AWS (no agents needed for ECR/Lambda).
+        . EC2 uses AWS SSM Agent for scanning.
+        . Findings encrypted with KMS.
+        . IAM controls access to results.
+
+    5. Cost Model
+        . Pay per scanned resource:
+            . EC2 instance → per instance-hour.
+            . ECR image → per image scan.
+            . Lambda → per function scan.
+        . No upfront cost; scales with usage.
+
+    6. Industry Standards
+✅      . Enable Inspector for all accounts via AWS Organizations.
+✅      . Integrate with ECR pipelines → scan images before deployment.
+✅      . Use Security Hub to aggregate Inspector findings.
+✅      . Prioritize remediation using Inspector risk scores.
+✅      . Automate alerts → SNS/EventBridge for critical CVEs.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → secure web apps by scanning EC2 + container images.
+        . Financial services → compliance audits, PCI DSS checks.
+        . Healthcare → protect patient systems (HIPAA workloads).
+        . DevOps teams → integrate vulnerability scanning into CI/CD pipelines.
+        . SaaS providers → ensure secure containers before release.
+
+    8. Summary
+        . Amazon Inspector = continuous vulnerability management for AWS workloads.
+            . Scans EC2, ECR, and Lambda for CVEs and misconfigurations.
+            . Prioritizes risks with context-aware scoring.
+            . Best practices → enable org-wide, integrate with CI/CD + Security Hub, automate alerts & patching.

@@ -1,0 +1,58 @@
+
+AWS Certificate Manager (ACM) – Key Pointers
+
+    1. What is ACM?
+        . A managed service to provision, manage, and deploy SSL/TLS certificates.
+        . Supports both public certificates (for internet-facing apps) and private certificates (for internal apps).
+        . Automates renewals → no downtime from expired certs.
+
+    2. Why Use It?
+        . Certificates are critical for HTTPS, secure APIs, and compliance.
+        . Manual management = error-prone → ACM provides:
+            . Free public certs for AWS resources.
+            . Auto-renewal & deployment.
+            . Integration with AWS load balancers, CloudFront, API Gateway, App Runner, etc.
+
+    3. Core Features
+        . Public Certificates → Free SSL/TLS certs (issued by Amazon CA).
+        . Private CA (ACM PCA) → Create private PKI for internal services.
+        . Auto-Renewal → No manual cert renewal needed.
+        . Deployment Targets:
+            . Elastic Load Balancer (ALB/NLB/CLB)
+            . CloudFront
+            . API Gateway / App Runner / App Mesh
+            . EC2 via Elastic Beanstalk
+        . Validation Options:
+            . DNS validation (preferred)
+            . Email validation
+
+    4. Security
+        . Certificates managed by ACM are stored securely.
+        . Private CA supports custom certificate hierarchies.
+        . IAM policies restrict who can request/export certs.
+        . Certificates use RSA 2048/4096 or Elliptic Curve (EC) cryptography.
+
+    5. Cost Model
+        . Public Certificates → Free.
+        . Private CA → Paid (per CA + per certificate issued).
+        . You pay only if you use ACM Private CA, not for free ACM public certs.
+
+    6. Industry Standards
+        . Always use ACM certs for AWS load balancers, CloudFront, API Gateway.
+✅      . Prefer DNS validation → automated renewals.
+✅      . Use ACM Private CA for internal apps/microservices.
+✅      . Rotate certs automatically with ACM instead of manual OpenSSL certs.
+✅      . Use IAM policies to restrict cert issuance & export.
+
+    7. Typical Corporate Use Cases
+        . E-commerce / SaaS → secure websites & APIs with HTTPS.
+        . Enterprises → internal PKI with ACM Private CA.
+        . Microservices → mutual TLS (mTLS) between services.
+        . CloudFront/ALB apps → free SSL with global distribution.
+        . Regulated industries → custom cert hierarchies via Private CA.
+
+    8. Summary
+        . AWS Certificate Manager (ACM) = free SSL/TLS certs for AWS resources.
+            . Automates provisioning, renewal, and deployment.
+            . Public certs = free, Private CA = paid.
+            . Industry best practices → always use DNS validation, integrate ACM certs with ELB/CloudFront/API Gateway, use ACM PCA for internal PKI.

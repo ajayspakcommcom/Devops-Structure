@@ -1,0 +1,63 @@
+
+Amazon GuardDuty – Key Pointers
+
+    1. What is GuardDuty?
+        . A managed threat detection service that continuously monitors AWS accounts, workloads, and data for malicious activity and unauthorized behavior.
+        . Uses machine learning, anomaly detection, and threat intelligence feeds.
+        . Works without installing agents → analyzes data from AWS logs.
+
+    2. Why Use It?
+        . Detects threats early (crypto-mining, compromised IAM, malware).
+        . Helps meet security compliance (PCI DSS, HIPAA, ISO, SOC2).
+        . Reduces need for a full SIEM setup in smaller orgs.
+        . Integrates into Security Hub + automated response pipelines.
+
+    3. Core Features
+        . Data Sources Monitored:
+            . VPC Flow Logs (network traffic patterns).
+            . CloudTrail (API calls, IAM usage).
+            . DNS Logs (suspicious domain queries).
+            . EKS Audit Logs (Kubernetes threats).
+            . S3 Data Access Logs (exfiltration attempts).
+        . Findings:
+            . Compromised IAM credentials.
+            . Malicious EC2 behavior (botnets, crypto-mining).
+            . S3 bucket data exfiltration.
+            . Recon attempts from attackers.
+        . Severity Levels: Low, Medium, High (prioritized alerts).
+        . Integration:
+            . Security Hub (central view).
+            . EventBridge (automated responses → isolate EC2, rotate keys).
+
+    4. Security Model
+        . Runs entirely within AWS (no agents).
+        . Uses AWS’s own threat intel feeds + partner feeds.
+        . Findings encrypted (KMS).
+        . IAM policies control access to results.
+
+    5. Cost Model
+        . Pay-per-GB of log data analyzed:
+          . VPC Flow Logs, DNS, CloudTrail, EKS audit logs, S3 events.
+        . No upfront cost.
+        . Free 30-day trial per account.
+
+    6. Industry Standards
+        . Enable GuardDuty across all accounts via AWS Organizations.
+    ✅  . Send findings to Security Hub for unified dashboards.
+    ✅  . Automate responses → e.g., block suspicious IP with WAF or isolate EC2 with Lambda.
+    ✅  . Regularly review findings & integrate into SOC playbooks.
+    ✅  . Use multi-region GuardDuty for global coverage.
+
+    7. Typical Corporate Use Cases
+        . Financial services → detect insider threats, fraud.
+        . Healthcare → compliance-driven anomaly detection.
+        . E-commerce → prevent account takeover + data theft.
+        . Government → monitor for advanced persistent threats (APT).
+        . DevOps → detect misconfigured IAM roles or open S3 buckets.
+
+    8. Summary
+        . Amazon GuardDuty = threat detection & continuous monitoring.
+            . Monitors AWS logs for malicious/unauthorized activity.
+            . Provides ML-driven, prioritized findings.
+            . Best practices → enable org-wide, integrate with Security Hub + EventBridge, automate remediation.
+

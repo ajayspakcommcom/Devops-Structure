@@ -1,0 +1,73 @@
+
+AWS WAF & AWS Shield – Key Pointers
+
+    1. AWS WAF (Web Application Firewall)
+        . Protects web applications from application-layer (Layer 7) attacks.
+        . Blocks/filters malicious traffic before it reaches your apps.
+
+        . Core Features
+            . Define rules to allow/block/count requests.
+            . Managed Rule Groups → preconfigured rules (SQLi, XSS, OWASP Top 10).
+            . Custom Rules → based on IP, headers, URI, query string, geolocation.
+            . Works with:
+                . CloudFront
+                . Application Load Balancer (ALB)
+                . API Gateway
+                . AppSync
+            . Real-time monitoring via CloudWatch.
+
+        . Use Cases
+            . Prevent SQL injection, XSS, bot attacks.
+            . Block requests from malicious IPs or countries.
+            . Rate limiting (e.g., block >100 requests/sec from same IP).
+
+    2. AWS Shield
+        . Protects against DDoS (Distributed Denial of Service) attacks.
+        . Two versions:
+            . Shield Standard → Free, always-on, protects against common L3/L4 DDoS (e.g., SYN floods, UDP reflection).
+            . Shield Advanced → Paid, adds:
+                . Enhanced protection for L3–L7 attacks.
+                . 24/7 DDoS Response Team (DRT) support.
+                . Cost protection against scaling charges during attacks.
+                . Detailed attack diagnostics + advanced monitoring.
+
+        . Use Cases
+            . Protect public apps (websites, APIs, games) from DDoS.
+            . Enterprise apps with compliance requirements (PCI DSS, HIPAA).
+            . SaaS/multi-tenant platforms needing guaranteed uptime under attack.
+
+
+    3. Security Model
+        . WAF = Application layer (L7) protection.
+        . Shield = Network/transport layer (L3/L4) + Advanced for L7.
+        . Together they provide multi-layer defense:
+           . Shield → absorbs massive DDoS floods.
+           . WAF → blocks malicious web requests (SQLi, bots).
+        
+    4. Cost Model
+        . WAF:
+           . $5/month per web ACL.
+           . $1/month per rule.
+           . $0.60 per million requests processed.
+        . Shield Standard → Free.
+        . Shield Advanced → ~$3,000/month per organization.
+
+    5. Industry Standards
+        . Always enable Shield Standard (free, auto-on).
+        . Use WAF managed rule groups for quick protection (SQLi, XSS, bot mitigation).
+        . For high-risk apps → Shield Advanced + WAF together.
+        . Use rate-based rules to mitigate brute force/bot traffic.
+        . Monitor WAF metrics in CloudWatch for anomalies.
+
+    6. Typical Corporate Use Cases
+        . E-commerce → Block bots, fraud attempts, scrapers.
+        . Banking/Finance → DDoS & L7 attack protection.
+        . Healthcare → HIPAA compliance apps.
+        . Gaming → Protect multiplayer APIs from floods.
+        . SaaS platforms → Ensure uptime for global customers.
+
+    7. Summary
+        . AWS WAF → Protects against application-layer attacks (SQLi, XSS, bots).
+        . AWS Shield → Protects against network-layer DDoS (L3/L4).
+        . Best practice → use WAF + Shield together (multi-layer defense).
+        . Shield Standard = free for all, Shield Advanced = enterprise-grade with DRT support + cost protection.
