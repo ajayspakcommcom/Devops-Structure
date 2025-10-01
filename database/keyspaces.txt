@@ -1,0 +1,57 @@
+
+Amazon Keyspaces – Key Pointers
+
+    1. What is Keyspaces?
+        . A fully managed serverless database compatible with Apache Cassandra.
+        . Uses wide-column NoSQL model (good for time-series & high-write workloads).
+        . You use the Cassandra Query Language (CQL) — same drivers & tools as open-source Cassandra.
+
+    2. Why Use It?
+        . Cassandra is powerful but hard to manage (scaling, replication, tuning).
+        . Keyspaces provides:
+           . Serverless scaling → no clusters to manage.
+           . Pay-per-request pricing.
+           . 99.99% availability SLA across multiple AZs.
+
+    3. Core Features
+        . Cassandra API compatibility → lift-and-shift workloads.
+        . Elastic scaling → handle thousands of writes/sec without provisioning nodes.
+        . Multi-AZ replication → built-in HA & fault tolerance.
+        . Two capacity modes:
+            . On-Demand → auto scales (best for unpredictable workloads).
+            . Provisioned → fixed throughput with optional auto-scaling.
+        . Backup/Restore → point-in-time recovery (up to 35 days).
+
+    4. Security
+        . Runs inside AWS VPC.
+        . Encryption at rest (KMS) & in transit (TLS).
+        . IAM authentication + fine-grained table permissions.
+        . Audit logging via CloudTrail.
+
+    5. Cost Model
+        . On-Demand mode: pay per read/write request.
+        . Provisioned mode: pay for reserved capacity (cheaper at scale).
+        . Storage cost per GB-month.
+        . Backup storage charged separately.
+
+    6. Industry Standards
+        . Use Keyspaces when:
+            . You need Cassandra features without ops overhead.
+            . Write-heavy, large-scale, time-series workloads.
+            . Best Practices
+                . Start with On-Demand → switch to Provisioned when traffic stabilizes.
+                . Use partition keys carefully to avoid hotspots.
+                . Enable point-in-time recovery for compliance.
+                . Use IAM roles instead of static passwords.
+
+    7. Typical Corporate Use Cases
+        . IoT apps → storing sensor data (time-series).
+        . Financial services → fraud detection, high-volume transactions.
+        . E-commerce → product catalogs, recommendation systems.
+        . Telecom → call records, customer interactions.
+        . Gaming → user activity/events tracking.
+
+    8. Summary
+        . Amazon Keyspaces = serverless Cassandra-compatible DB.
+            . Handles massive write-heavy, time-series, and catalog workloads.
+            . Best practices: On-demand mode for dynamic workloads, provisioned for predictable traffic, strong partition key design, IAM-based security.

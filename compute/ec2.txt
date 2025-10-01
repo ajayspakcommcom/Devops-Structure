@@ -1,0 +1,71 @@
+
+Amazon EC2 – Key Pointers
+
+    a. What is EC2?
+        1. Virtual servers in the cloud.
+        2. You choose OS, CPU, memory, storage, networking.
+        3. Fully customizable, pay-as-you-go compute.
+        4. Foundation of most AWS workloads.
+
+    b. Instance Types (Choose Based on Workload)
+        1. General Purpose (t, m series) → Web servers, dev/test.
+        2. Compute Optimized (c series) → High CPU tasks (gaming, data processing).
+        3. Memory Optimized (r, x series) → Databases, caching, analytics.
+        4. Storage Optimized (i, d series) → High IOPS workloads, NoSQL, data warehousing.
+        5. Accelerated Computing (p, g series) → ML/AI, GPUs, HPC.
+        6. Burstable (t2, t3, t4g) → Low-cost apps that need occasional CPU burst.
+
+    c. Pricing Models
+        1. On-Demand → pay per second/hour (flexible, no commitment).
+        2. Reserved Instances → 1–3 year commitment, up to 72% cheaper.
+        3. Savings Plans → flexible compute discount.
+        4. Spot Instances → up to 90% cheaper, but can be terminated anytime.
+        5. Dedicated Hosts/Instances → compliance, license-bound apps.
+
+    d. Storage Options
+        1. EBS (Elastic Block Store) → persistent block storage, survives reboots.
+        2. Instance Store → temporary, tied to instance lifecycle.
+        3. Attach multiple EBS volumes per EC2.
+
+    e. Networking
+        1. Placed inside VPC (Virtual Private Cloud).
+        2. ENI (Elastic Network Interfaces) for multi-NIC setups.
+        3. Elastic IPs for static public IP.
+        4. Security Groups (firewall rules at instance level).
+        5. NACLs (subnet-level firewall).
+
+    f. Scaling & Availability
+        1. Auto Scaling Groups (ASG) → scale up/down automatically.
+        2. Load Balancers (ELB/ALB/NLB) → distribute traffic.
+        3. Deploy across multiple AZs for HA (high availability).
+
+    g. Security
+        1. Key pairs (SSH/RDP) for login.
+        2. IAM roles for permissions (never hardcode keys).
+        3. Security Groups for inbound/outbound control.
+        4. SSM (Systems Manager Session Manager) for secure shell access (no SSH keys needed).
+
+    h. Monitoring
+        1. CloudWatch metrics (CPU, disk, network).
+        2. CloudTrail for API activity.
+        3. SSM Agent for patching & inventory.
+
+    i. Industry Standards
+    ✅ 1. Always deploy in private subnets with Bastion/SSM for secure access.
+    ✅ 2. Use Auto Scaling + Load Balancer for production.
+    ✅ 3. Encrypt EBS volumes with KMS.
+    ✅ 4. Apply patch management via Systems Manager.
+    ✅ 5. Monitor with CloudWatch + CloudTrail.
+    ✅ 6. Use Reserved/Savings Plans for predictable workloads, Spot for batch jobs.
+
+    j. Typical Corporate Use Cases
+        1. Web Hosting → LAMP/MEAN stack on EC2.
+        2. Databases → Self-managed DBs (though RDS is preferred).
+        3. Application Servers → Node.js, Java, Python apps.
+        4. Batch Processing → Spot instances for cost savings.
+        5. Legacy Apps → Windows workloads with licensing needs.
+
+    k. Summary:
+        EC2 = AWS’s core compute service.
+            1. Flexible, scalable, secure virtual machines.
+            2. Industry best practices = VPC + private subnet + load balancer + autoscaling + encryption + monitoring.

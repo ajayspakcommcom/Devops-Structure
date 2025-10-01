@@ -1,0 +1,60 @@
+
+Amazon CloudFront – Key Pointers
+
+    1. What is CloudFront?
+        . A global content delivery network (CDN).
+        . Caches and delivers content (websites, APIs, videos, software) to users from edge locations worldwide.
+        . Reduces latency, improves performance, and offloads origin servers (like S3, ALB, or EC2).
+
+    2. Why Use It?
+        . Improve performance (low latency, high transfer speed).
+        . Reduce origin load & cost.
+        . Enhance security (integrates with AWS Shield, WAF, ACM).
+        . Enable global reach with 400+ edge locations.
+
+    
+    3. Core Features
+        . Origins: S3, ALB, EC2, EKS/ECS, or custom on-prem servers.
+        . Caching: Configurable TTL, cache invalidation.
+        . HTTPS by default with ACM SSL/TLS.
+        . Edge Functions:
+           . Lambda@Edge → run custom logic at edge (auth, redirects, headers).
+           . CloudFront Functions → lightweight JS at edge.
+        . Geo-Restriction → allow/deny content by country.
+        . Signed URLs/Cookies → secure premium content.
+
+    
+    4. Security
+        . TLS encryption (free ACM certs).
+        . AWS WAF integration for app-layer firewall.
+        . AWS Shield Standard → free DDoS protection.
+        . OAC (Origin Access Control) → restrict direct access to S3/ALB.
+
+    5. Cost Model
+        . Pay for:
+           . Data transfer out (varies by region).
+           . HTTP/HTTPS requests.
+           . Optional: invalidations, Lambda@Edge.
+        . Free tier → 1 TB data transfer out/month for 12 months.
+        . Usually cheaper than serving content directly from S3/EC2 for global users.
+
+    6. Industry Standards
+✅      . Put CloudFront in front of all public-facing apps (S3, ALB, API Gateway).
+✅      . Use OAC + private S3 buckets → secure content.
+✅      . Cache static assets (images, videos, JS, CSS) aggressively.
+✅      . Use signed URLs/cookies for premium or private content.
+✅      . Enable WAF rules for security (SQLi, XSS).
+✅      . Monitor with CloudWatch + CloudFront Reports.
+
+    7. Typical Corporate Use Cases
+       . Websites → Static + dynamic content distribution.
+       . APIs → Accelerate REST/GraphQL APIs globally.
+       . Media/OTT → Video streaming (HLS/DASH).
+       . E-commerce → Low-latency product images/catalog.
+       . Software distribution → Secure download delivery.
+
+    8. Summary
+        . Amazon CloudFront = global CDN for fast, secure content delivery.
+            . Improves latency & performance worldwide.
+            . Integrates with S3, ALB, API Gateway.
+            . Industry best practices = use OAC, enable WAF/Shield, cache static content, use signed URLs for private access.

@@ -1,0 +1,55 @@
+Amazon Timestream – Key Pointers
+
+    1. What is Timestream?
+        . A fully managed, serverless time-series database.
+        . Optimized for storing and analyzing time-stamped data (IoT, telemetry, app monitoring).
+        . Scales to trillions of events/day.
+
+    2. Why Use It?
+        . Time-series data (metrics, logs, IoT events) grows fast and needs efficient storage.
+        . Timestream automatically:
+           . Stores recent data in memory-optimized tier (fast queries).
+           . Moves older data to cost-optimized tier automatically.
+        . No server management, auto-scales up/down.
+
+    3. Core Features
+        . Purpose-built query engine → SQL-like queries with time-series functions (time_bucket, interpolate, approximate_percentile).
+        . Storage tiers:
+            . Memory store → recent, high-performance data.
+            . Magnetic store → older, cost-effective data.
+        . Built-in analytics → aggregations, trends, forecasting.
+        . Integration with BI tools → Grafana, QuickSight.
+
+    4. Security
+        . Runs inside VPC.
+        . Encryption at rest (KMS) + in transit (TLS).
+        . IAM roles & policies for access control.
+        . Audit logs in CloudTrail.
+
+    5. Cost Model
+        . Pay for:
+            . Data ingested (per GB).
+            . Storage (memory tier vs magnetic tier).
+            . Query processing (per GB scanned).
+        . Serverless → no instance provisioning.
+        . Typically cheaper than using RDS/DynamoDB for time-series.
+
+    6. Industry Standards
+       . Use Timestream for time-series, metrics, and IoT data, not for general OLTP/NoSQL.
+    ✅ . Define retention policies (e.g., keep 7 days in memory, 1 year in magnetic).
+    ✅ . Use partitioning by time + dimension (device_id, region) for faster queries.
+    ✅ . Integrate with Kinesis + IoT Core for real-time ingestion.
+    ✅ . Monitor ingestion/query usage with CloudWatch.
+
+    7. Typical Corporate Use Cases
+        . IoT → sensor data from devices, smart meters.
+        . DevOps → application logs, performance metrics.
+        . Telecom → call metrics, network usage over time.
+        . Manufacturing → machine telemetry, predictive maintenance.
+        . Finance → transaction history, fraud detection patterns.
+
+    8. Summary
+        . Amazon Timestream = time-series database service.
+            . Serverless, auto-scaling, two-tier storage.
+            . Best for IoT, telemetry, monitoring, analytics.
+            . Industry best practices = use retention policies, integrate with Kinesis/IoT, monitor costs per GB ingestion/query.

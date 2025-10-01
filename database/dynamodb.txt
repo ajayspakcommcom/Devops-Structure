@@ -1,0 +1,60 @@
+
+Amazon DynamoDB – Key Pointers
+    
+    1. What is DynamoDB?
+        . A fully managed NoSQL key-value & document database.
+        . Serverless → no servers to manage, auto scales to millions of requests/sec.
+        . Designed for high availability & low latency (<10 ms at scale).
+
+    2. Why Use It?
+        . Handles massive workloads (e.g., Amazon.com, Netflix, Uber use DynamoDB).
+        . Supports predictable performance at scale.
+        . Built-in multi-region, multi-master replication with Global Tables.
+        . Fine-tuned for OLTP, real-time apps, and mobile/web backends.
+
+    3. Core Features
+        . Data model: Tables → Items → Attributes (JSON-like, flexible schema).
+        . Capacity modes:
+            . On-Demand → pay per request, auto-scales.
+            . Provisioned → fixed RCU/WCU with optional autoscaling.
+        . Global Tables → multi-region replication.
+        . DAX (DynamoDB Accelerator) → in-memory caching for microsecond latency.
+        . Streams → change data capture (trigger Lambda/SQS/Kinesis).
+        . TTL (Time to Live) → auto-expire items.
+
+    4. Security
+        . IAM policies for fine-grained access.
+        . Encryption at rest (KMS) + in transit (TLS).
+        . VPC Endpoints → private access without internet.
+        . CloudTrail → log all API calls.
+
+    5. Cost Model
+        . Pay for:
+            . Read/Write capacity (RCUs/WCUs).
+            . Storage ($0.25 per GB-month).
+            . Streams, DAX, backups, and data transfer (if used).
+        . On-Demand → best for unpredictable traffic.
+        . Provisioned → cheaper for steady traffic.
+        . Free Tier → 25 GB storage + 25 RCUs/WCUs for 12 months
+
+    6. Industry Standards
+    ✅ . Use single-table design → organize multiple entities in one table with partition/sort keys.
+    ✅ . Carefully choose partition keys to avoid hotspots.
+    ✅ . Use Global Tables for global-scale apps.
+    ✅ . Enable auto-scaling or use on-demand mode.
+    ✅ . Enable PITR (Point-in-time recovery) for DR.
+    ✅ . Use DAX for caching heavy read workloads.
+    ✅ . Monitor throttling with CloudWatch metrics.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → product catalogs, shopping carts, inventory.
+        . Gaming → player profiles, leaderboards, matchmaking.
+        . Finance → fraud detection, transactions, real-time analytics.
+        . IoT → device state, telemetry ingestion.
+        . Mobile/Web apps → user sessions, metadata, preferences.
+
+    8. Summary
+        . Amazon DynamoDB = serverless NoSQL database.
+            . Best for high-performance, large-scale applications.
+            . Key features = on-demand scaling, global replication, streams, TTL, DAX.
+            . Industry best practices = single-table design, encryption, PITR backups, auto-scaling.

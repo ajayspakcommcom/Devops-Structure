@@ -1,0 +1,61 @@
+Amazon ElastiCache – Key Pointers
+
+    1. What is ElastiCache?
+        . A fully managed in-memory data store and caching service.
+        . Supports two popular engines:
+            . Redis (more advanced: pub/sub, streams, persistence).
+            . Memcached (simple, fast, distributed cache).
+        . Used to speed up apps by reducing database load and latency.
+
+    2. Why Use It?
+        . Microsecond latency for reads/writes.
+        . Reduce load on RDS/Aurora/DynamoDB.
+        . Improve scalability of apps with high request volumes.
+        . Built-in replication, failover, backups (Redis).
+
+    3. Deployment Options
+        . Cluster mode disabled (single shard + replicas) → simpler, single write node.
+        . Cluster mode enabled (sharding) → horizontal scaling across multiple shards, each with replicas.
+
+    4. Features
+        . Automatic failover (Redis Multi-AZ).
+        . Persistence (Redis snapshot backups, AOF).
+        . Security: VPC isolation, encryption (in-transit + at rest), IAM auth.
+        . Scalability: Up to millions of ops/sec.
+        . Monitoring: CloudWatch metrics (CPU, memory, eviction count).
+
+    5. Cost Model
+        . Pay for:
+            . Node type (vCPU, memory).
+            . Cluster size (shards, replicas).
+            . Data transfer.
+        . No extra cost for ElastiCache itself — just infra.
+        . Reserved nodes → 30–50% cheaper for 1–3 year terms.
+
+    6. Industry Standards
+    ✅  . Use Redis for:
+            . Caching (web sessions, DB query results).
+            . Real-time analytics (leaderboards, counters).
+            . Pub/Sub messaging.
+            . Queues and streams.
+        . Use Memcached for:
+            . Simple key-value caching (stateless apps).
+            . Horizontal scale-out with many nodes.
+        . Best practices:
+            . Deploy Multi-AZ with auto-failover for prod.
+            . Enable encryption + AUTH.
+            . Monitor evictions + CPU/memory usage.
+            . Use Cluster Mode (Redis) for >100GB datasets.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → Cache product catalog, session data.
+        . Gaming → Real-time leaderboards, matchmaking.
+        . Social media → Feed caching, pub/sub notifications.
+        . Finance → Low-latency transaction/session caching.
+        . IoT → Real-time stream processing.
+
+    8. Summary
+        Amazon ElastiCache = managed Redis/Memcached for caching & real-time data.
+            . Redis = rich features (replication, persistence, pub/sub).
+            . Memcached = simple, high-throughput cache.
+            . Industry best practices = Redis Multi-AZ, encryption, monitoring, reserved nodes for cost optimization.

@@ -1,0 +1,66 @@
+AWS App Runner – Key Pointers
+
+    1. What is App Runner?
+        . A fully managed service to build and run containerized web applications and APIs at scale.
+        . You just provide source code (GitHub/CodeCommit) or a container image (ECR) → App Runner handles:
+            . Container build
+            . Deployment
+            . Load balancing
+            . Scaling (up & down, including to zero)
+
+    2. Why Use It?
+       . No need to manage EC2, ECS, EKS, VPCs, ALBs.
+       . Focus on app code → AWS handles the infra.
+       . Great for teams that want serverless-like simplicity with container flexibility.
+
+    3. How It Works
+        . Two starting points:
+            . Source code (Node.js, Python, Java, etc.) → App Runner builds a container using AWS-provided buildpacks.
+            . Prebuilt container image (ECR) → App Runner just runs it.
+        . Then App Runner:
+            . Deploys behind an HTTPS endpoint (ACM certificate managed automatically).
+            . Autoscaling based on traffic (scale to zero when idle).
+            . Provides logging & monitoring out-of-the-box.
+
+    4. Features
+        . Autoscaling → scales instances up/down automatically.
+        . HTTPS by default → managed SSL certs.
+        . Private ECR support → secure image hosting.
+        . VPC Connector → connect to RDS, ElastiCache, etc.
+        . Observability → integrated with CloudWatch logs & metrics.
+
+    5. Security
+        . IAM roles attached to service for resource access.
+        . ACM SSL certificates auto-provisioned.
+        . Runs in an AWS-managed VPC (optionally connect to your VPC).
+        . All traffic encrypted (in transit + optional at rest).
+
+    6. Cost Model
+        . Pay for:
+           . vCPU & memory usage per second (only while app is running).
+           . Requests handled.
+        . Example (us-east-1):
+           . $0.064 vCPU-hour.
+           . $0.007 GB-hour.
+           . First 1M requests free → $1 per additional 1M.
+        . Scales to zero → saves cost when idle.
+
+    7. Industry Standards
+       . Use source-based deployments for small apps, ECR-based for containerized microservices.
+    ✅ . Integrate with CI/CD (CodePipeline, GitHub Actions) for automated builds/deployments.
+    ✅ . Use VPC Connectors to securely access DBs inside private subnets.
+    ✅ . Monitor with CloudWatch + set up alarms.
+    ✅ . Use environment variables + IAM roles for secrets (never hardcode).
+
+    8. Typical Corporate Use Cases
+        . Startups/SMBs → Fast way to deploy APIs without DevOps.
+        . Web Apps & APIs → Node.js, Django, Spring Boot apps.
+        . Internal Services → Microservices behind a secure HTTPS endpoint.
+        . Event Processing → REST endpoints for webhooks (e.g., Stripe, GitHub events).
+        . Prototypes/MVPs → Deploy quickly, then scale later.
+
+    Summary:
+        AWS App Runner = serverless container app platform.
+            . Run web apps & APIs directly from code or container.
+            . Scales automatically, HTTPS out-of-the-box, no infra management.
+            . Industry best practices: CI/CD + VPC Connector + IAM roles + CloudWatch monitoring.

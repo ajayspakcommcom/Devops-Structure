@@ -1,0 +1,61 @@
+
+EC2 Image Builder – Key Pointers
+
+    1. What is it?
+        . A fully managed service that automates the creation, testing, and distribution of golden images for EC2 and on-premises.
+        . Works for both:
+           . Amazon Machine Images (AMIs) for EC2.
+           . Container images (Docker/ECR).
+
+    2. Why Use It?
+        . Manual AMI building (customizing OS, patching, hardening) is error-prone.
+        . Image Builder ensures consistent, secure, and up-to-date images.
+        . Integrates with CI/CD pipelines → updated images auto-built & distributed.
+
+    3. Workflow
+        . Image Pipeline → defines the automation process (build + test + distribute).
+        . Recipe → defines the image components:
+           . Base OS (Amazon Linux, Ubuntu, Windows).
+           . Additional software (e.g., Nginx, Java, security agents).
+        . Build → EC2 Image Builder launches a build instance, installs components, creates a new AMI/container.
+        . Test → Run automated tests to validate (boot time, app version, security).
+        . Distribute → AMI pushed to Regions/accounts or container image → ECR.
+
+    4. Key Features
+        . Automated OS patching → ensures security compliance.
+        . Versioning → track image versions.
+        . Multi-Region distribution → replicate AMIs across Regions.
+        . Integration with Systems Manager (SSM) → run custom build/test scripts.
+        . CloudWatch Logs → monitor build/test runs.
+
+    5. Security
+        . Images automatically hardened (patches applied).
+        . Encrypted AMIs/EBS snapshots with KMS keys.
+        . IAM roles control build/test permissions.
+
+    6. Cost Model
+        . EC2 Image Builder itself is free.
+        . You only pay for:
+            . EC2 instances used during build/test.
+            . EBS storage for images.
+            . S3/ECR for storing outputs.
+
+    7. Industry Standards
+        . Use Image Builder pipelines to automate monthly OS patch AMIs.
+        . Store golden AMIs in a central account → share across accounts.
+        . Always run tests (security scanning, CIS benchmarks) before publishing.
+        . Encrypt all AMIs with KMS.
+        . Integrate with CI/CD (CodePipeline, Jenkins, GitHub Actions).
+
+
+    8. Typical Corporate Use Cases
+        . Enterprises: Maintain golden AMIs for compliance & security.
+        . DevOps teams: Bake application dependencies into base images.
+        . Container teams: Build & distribute Docker images to ECR.
+        . Multi-account setups: Distribute approved images across all environments.
+
+    9. Summary:
+        EC2 Image Builder = automated image factory.
+            . Creates secure, up-to-date AMIs & container images.
+            . Industry best practice = use for golden images, automated patching, compliance.
+            . Free service → only infra costs apply.

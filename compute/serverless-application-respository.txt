@@ -1,0 +1,48 @@
+AWS Serverless Application Repository (SAR) – Key Pointers
+
+    1. What is SAR?
+        . A managed repository of pre-built serverless applications published by AWS, partners, and the community.
+        . Lets you discover, deploy, and share serverless apps quickly.
+        . Built on AWS SAM (Serverless Application Model).
+
+    2. What You Can Do
+        . Discover → Search ready-to-use apps (image resize, log processing, Slack bots, API backends, ML pipelines, etc.).
+        . Deploy → 1-click deploy to your AWS account.
+        . Share → Publish your own apps (private within org or public to all).
+
+    3. How It Works
+        . Apps are defined using AWS SAM templates (CloudFormation).
+        . You can customize parameters at deploy time (e.g., S3 bucket name, table name).
+        . After deployment → it creates the underlying Lambda, API Gateway, DynamoDB, S3, etc.
+
+    4. Integration
+        . Integrated into AWS Management Console, CLI, SDKs.
+        . Can be automated with CI/CD (CodePipeline, GitHub Actions).
+        . Works with SAM CLI for local dev + testing.
+
+    5. Security
+        . Publishers must specify permissions their app requires (IAM roles/policies).
+        . Users can review before deploying → transparency in permissions.
+        . Apps are versioned → you can lock or upgrade safely.
+
+    6. Cost Model
+        . SAR itself = free.
+        . You pay for the underlying AWS services that the app deploys (Lambda, S3, DynamoDB, etc.).
+        . Example: Deploying a thumbnail generator may incur S3 + Lambda execution charges.
+
+    7. Industry Standards
+    ✅ . Use SAR for quick prototypes (e.g., deploy ready-made ML pipeline, log processor).
+    ✅ . Enterprises publish internal serverless apps for reusability across teams.
+    ✅ . Review IAM permissions carefully before deploying third-party apps.
+    ✅ . Use CI/CD + SAM templates for managing updates.
+
+    8. Typical Corporate Use Cases
+        . Startups → Deploy sample serverless APIs fast.
+        . Enterprises → Share internal serverless apps across multiple accounts/teams.
+        . Data/ML → Prebuilt analytics pipelines.
+        . Ops → Ready-made monitoring/logging solutions.
+
+    9. Summary:
+        . AWS Serverless Application Repository = App Store for serverless apps.
+        . Speeds up adoption of Lambda + API Gateway + DynamoDB + S3 patterns.
+        . Best practices: use internally for reusability, check IAM permissions, deploy via CI/CD.

@@ -1,0 +1,62 @@
+Amazon Lightsail – Key Pointers
+
+    a. What is Lightsail?
+        1. A simplified VPS (Virtual Private Server) service on AWS.
+        2. Provides bundled resources (compute + storage + network) at a fixed monthly price.
+        3. Designed for developers, startups, and SMBs who want less complexity than EC2.
+
+    b. Features
+        1. Pre-configured blueprints: WordPress, LAMP, Node.js, Django, etc.
+        2. Fixed monthly pricing (starts around $5/month).
+        3. Includes compute, SSD storage, data transfer, static IP, DNS management.
+        4. One-click scaling to larger plans.
+        5. Supports containers (Lightsail Container Service) and databases (Lightsail Managed DB).
+
+    c. Comparison with EC2
+        | Feature         | Lightsail               | EC2                         |
+        | --------------- | ----------------------- | --------------------------- |
+        | **Ease of Use** | Very simple, few clicks | Complex, full customization |
+        | **Pricing**     | Fixed bundles           | Pay-per-use, flexible       |
+        | **Networking**  | Basic firewall          | Advanced (VPC, SG, NACLs)   |
+        | **Scaling**     | Manual or limited       | Auto Scaling Groups         |
+        | **Use Case**    | Small apps, blogs, PoCs | Enterprise-grade workloads  |
+
+    d. Networking
+        1. Static IP included.
+        2. Basic firewall rules (allow ports).
+        3. Custom domain setup with Lightsail DNS or Route53.
+
+    e. Security
+        1. Default SSH key pairs for Linux.
+        2. Password + RDP for Windows instances.
+        3. Simpler than EC2’s IAM + SG/NACL model.
+
+    f. Backup & Snapshots
+        1. Supports instance snapshots (manual + scheduled).
+        2. Snapshots can be exported to EC2 for advanced scaling.
+
+    g. Cost Model
+        1. Fixed bundles (CPU + RAM + SSD + transfer).
+        2. Example (Linux/Unix instance, us-east-1):
+            a. $5 → 1 vCPU, 512MB RAM, 20GB SSD, 1TB transfer.
+            b. $20 → 2 vCPU, 4GB RAM, 80GB SSD, 4TB transfer.
+        3. Additional charges for extra data transfer, snapshots, static IPs beyond free tier.
+
+    h. Industry Standards
+        1. Use Lightsail for small-scale workloads:
+            a. Websites (WordPress, blogs, small e-commerce).
+            b. Development/staging environments.
+            c. Lightweight containerized apps.
+              1. Use EC2/EKS/ECS for production-grade, scalable workloads.
+              2. Snapshot & migrate to EC2 when scaling beyond Lightsail limits.
+
+    i. Typical Corporate Use Cases
+        1. Startups: Quick MVP deployment.
+        2. SMBs: WordPress, CRM, ERP systems.
+        3. Developers: Testing apps without EC2 complexity.
+        4. Education: Student projects, training.
+
+    j. Summary:
+        1. Lightsail = easy VPS service with fixed pricing.
+        2. Great for simple apps, blogs, PoCs, SMBs.
+        3. Enterprises usually start with Lightsail, then migrate to EC2/EKS for scaling.

@@ -1,0 +1,65 @@
+Amazon VPC – Key Pointers
+
+    1. What is VPC?
+        . A logically isolated virtual network in AWS.
+        . Lets you define and control:
+            . IP address ranges (CIDR blocks)
+            . Subnets (public/private)
+            . Route tables
+            . Network gateways (IGW, NAT, Transit Gateway, VPN, DX)
+            . Security controls (SGs, NACLs)
+
+    2. Why Use It?
+        . Every AWS resource (EC2, RDS, ECS/EKS, Lambda in VPC) runs inside a VPC.
+        . Gives you full control over networking like in an on-prem datacenter.
+        . Enables segmentation (public vs private), security, and compliance.
+
+
+    3. Core Components
+        . CIDR Block → e.g., 10.0.0.0/16.
+        . Subnets:
+        . Public Subnet → Internet accessible (via Internet Gateway).
+        . Private Subnet → Internal only, outbound via NAT Gateway.
+        . Route Tables → control traffic routing between subnets.
+        . Internet Gateway (IGW) → allows inbound/outbound to internet.
+        . NAT Gateway → private subnet → outbound internet.
+        . Security Groups (SGs) → stateful firewall at instance level.
+        . Network ACLs (NACLs) → stateless firewall at subnet level.
+        . VPC Peering / Transit Gateway → connect multiple VPCs.
+        . VPC Endpoints → private access to AWS services (S3, DynamoDB, etc.).
+
+    4. Security
+        . SGs → stateful, allow only defined inbound/outbound.=
+        . NACLs → stateless, explicit rules for allow/deny.
+        . Flow Logs → log traffic (accepted/rejected) for compliance & monitoring.
+        . PrivateLink / Endpoints → keep traffic off the public internet.
+
+
+    5. Cost Model
+        . VPC itself is free.
+        . You pay for:
+            . NAT Gateway (per hour + per GB processed).
+            . VPC Endpoints (per hour).
+            . Transit Gateway (per attachment + per GB).
+            . Data transfer across AZs/regions.
+
+    6. Industry Standards
+       . Always use at least 2–3 AZs for HA.
+    ✅ . Design with public + private subnets (multi-tier architecture).
+    ✅ . Use NAT Gateways for private subnet internet access.
+    ✅ . Use VPC Endpoints for private access to AWS services.
+    ✅ . Enable VPC Flow Logs for monitoring.
+    ✅ . Use Transit Gateway (instead of complex peering mesh) in enterprise setups.
+    ✅ . Separate dev, staging, prod VPCs (multi-account strategy with AWS Organizations).
+
+    7. Typical Corporate Use Cases
+       . Web Apps → Public subnet (ALB) + Private subnet (EC2/RDS).
+       . Hybrid Cloud → Extend VPC with VPN/Direct Connect to on-prem.
+       . Enterprise Networking → Hub-and-spoke via Transit Gateway.
+       . Secure Analytics → PrivateLink + S3/DynamoDB without internet.
+
+    8. Summary
+        . Amazon VPC = foundation of AWS networking.
+            . Define your own isolated network with full control.
+            . Core for security, HA, hybrid connectivity.
+            . Industry best practice → multi-AZ, public/private subnets, endpoints, monitoring with Flow Logs.

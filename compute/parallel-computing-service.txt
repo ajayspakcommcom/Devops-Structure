@@ -1,0 +1,68 @@
+
+AWS Parallel Computing – Key Pointers
+
+    1. What is it?
+        . Parallel computing = breaking big workloads into smaller tasks that run simultaneously across many CPUs/GPUs/instances.
+        . AWS provides a managed HPC ecosystem to run these workloads without buying expensive on-prem supercomputers.
+
+    2. Core AWS Services for Parallel Computing
+        . Amazon EC2 (HPC Instances)
+           . C, H, P, G series optimized for compute, memory, and GPU.
+           . Supports MPI (Message Passing Interface), OpenMP, CUDA, etc.
+           . Placement groups + Elastic Fabric Adapter (EFA) → low-latency networking.
+
+        . AWS Batch
+            . Fully managed batch job service.
+            . Runs thousands of jobs in parallel across EC2/Fargate.
+            . Good for simulation, ETL, scientific research.
+
+        . Amazon ECS / EKS (Containers)
+            . Run parallel workloads inside Docker/Kubernetes.
+            . Auto-scales pods/tasks for massive parallelism.
+
+        . AWS LambdaAWS Lambda
+            . Serverless parallel execution for short-lived, event-driven tasks.
+            . Can fan-out to thousands of functions in parallel (great for ETL, media processing).
+
+        . AWS ParallelCluster
+            . Open-source tool to orchestrate HPC clusters on AWS.
+            . Manages job schedulers (Slurm, AWS Batch, Torque).
+            . Good for research labs, simulations, genomics.
+
+        . FSx for Lustre
+            . Integrates with S3 for input/output datasets.
+            . High-performance shared file system for HPC workloads.
+
+        3. Supporting Services
+            . EFA (Elastic Fabric Adapter) → low-latency networking for tightly coupled MPI jobs.
+            . S3 + Glacier → store large datasets and results.
+            . CloudWatch + CloudTrail → monitor performance & job status.
+            . IAM → secure access.
+
+        4. Use Cases
+            . Scientific Research → Genomics, drug discovery.
+            . Engineering → CFD (Computational Fluid Dynamics), seismic analysis.
+            . Finance → Monte Carlo simulations, risk analysis.
+            . Media → Video rendering, VFX.
+            . ML/AI → Distributed training across GPUs.
+
+        5. Cost Model
+            . Pay for:
+                . EC2 instances (on-demand, reserved, spot).
+                . Storage (S3, FSx for Lustre, EBS).
+                . Data transfer (if inter-region).
+            . Spot Instances often used → 70–90% cheaper for non-urgent workloads.
+
+        6. Industry Best Practices
+           . Use ParallelCluster for cluster orchestration.
+        ✅ . Store datasets in S3, link with FSx Lustre for high-speed access.
+        ✅ . Use EFA networking for tightly coupled HPC jobs.
+        ✅ . Run stateless/batch jobs on AWS Batch or Lambda fan-out.
+        ✅ . Mix On-Demand + Spot for cost optimization.
+        ✅ . Always monitor performance via CloudWatch metrics.
+
+        7. Summary:
+            AWS Parallel Computing = HPC in the cloud.
+                . Options: EC2 HPC + EFA, Batch, ParallelCluster, Lambda fan-out, FSx Lustre.
+                . Used in science, finance, engineering, ML, and media.
+                . Industry best practice = combine EFA networking + ParallelCluster orchestration + FSx Lustre storage + Spot Instances for cost-effective supercomputing.

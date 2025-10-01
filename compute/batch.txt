@@ -1,0 +1,68 @@
+
+AWS Batch – Key Pointers
+
+    1. What is AWS Batch?
+        . A fully managed batch computing service.
+        . Runs hundreds to thousands of batch jobs efficiently.
+        . Automatically provisions the right compute (EC2, Spot, or Fargate) based on your workload.
+        . Ideal for scientific computing, ML training, simulations, video rendering, ETL jobs.
+
+
+    2. Core Components
+        . Jobs → The work units (a shell script, ML model training, video encoding, etc.).
+        . Job Definitions → Blueprint with job parameters (Docker image, vCPUs, memory).
+        . Job Queues → Where jobs wait until resources are available.
+        . Compute Environments → Managed set of compute (EC2 On-Demand, Spot, or Fargate) that Batch uses to run jobs.
+
+    3. Execution Model
+        . Jobs typically run inside Docker containers.
+        . Batch pulls images from ECR/Docker Hub.
+        . Can scale from single vCPU jobs → thousands of parallel jobs.
+
+    4. Integration
+        . S3 → Input/output data.
+        . CloudWatch Logs → Monitoring job output.
+        . IAM → Role-based access for jobs.
+        . Step Functions → Orchestrating workflows.
+        . ECS/Fargate → Runs the containers.
+
+    5. Scaling
+        . Batch auto-scales the compute environment.
+        . Supports EC2 Spot Instances for 70–90% cost savings.
+        . Can run on Fargate (serverless containers) → no EC2 management.
+
+    6. Security
+        . Jobs run with IAM roles → least privilege.
+        . Data in transit (TLS) + at rest (S3/EBS/KMS) encryption.
+        . Private networking via VPC integration.
+
+    7. Monitoring
+        . CloudWatch → metrics, job status.
+        . EventBridge → trigger alerts on job completion/failure.
+        . CloudTrail → logs API activity.
+
+    8. Cost Model
+        . No extra charge for AWS Batch service itself.
+        . Pay only for compute (EC2/Spot/Fargate) + storage.
+        . Spot pricing often used for cost efficiency.
+
+    9. Industry Standards
+        . Use Spot Instances for non-critical, retryable workloads (cheapest).
+        . Use On-Demand/Reserved for critical jobs.
+        . Store inputs/outputs in S3.
+        . Keep job definitions modular → 1 container = 1 job type.
+        . Use CloudWatch + EventBridge for monitoring & automation.
+        . Tag jobs/resources for cost tracking.
+
+    10. Typical Corporate Use Cases
+        . Media & Entertainment → Video rendering, transcoding.
+        . Finance → Risk analysis, Monte Carlo simulations.
+        . Healthcare/Research → Genomic analysis, ML training.
+        . Big Data/ETL → Batch extract-transform-load pipelines.
+        . Engineering → Simulations, CAD workloads.
+
+    Summary:
+        AWS Batch = fully managed batch processing at any scale.
+            . Runs containerized jobs.
+            . Uses EC2, Spot, or Fargate automatically.
+            . Industry best practice = S3 + Batch + CloudWatch + Spot for cost savings.

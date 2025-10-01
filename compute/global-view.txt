@@ -1,0 +1,50 @@
+AWS Global View – Key Pointers
+
+    1. What is AWS Global View?
+        . A feature in the AWS Management Console that gives you a single-pane-of-glass view of resources across all AWS Regions in your account (or AWS Organizations).
+        . Helps enterprises with multi-region visibility without logging into each region separately.
+
+    2. What It Shows
+        . Active resources across Regions:
+           . EC2 instances
+           . VPCs
+           . S3 buckets
+           . RDS instances
+           . IAM resources (Org level)
+        . Lets you filter by:
+           . Service
+           . Region
+           . Account (if using AWS Organizations)
+
+    3. Why Use It?
+        . Operational visibility → track all resources across multiple regions.
+        . Cost optimization → identify unused resources left running in other regions.
+        . Compliance & security → detect resources outside approved regions.
+        . Multi-account strategy → easier management for enterprises using AWS Organizations.
+
+    4. Integration
+        . AWS Organizations → manage multiple accounts.
+        . CloudWatch / CloudTrail → monitor + audit across regions.
+        . Cost Explorer → combined with global view for cost tracking.
+
+    5. Security
+        . Access controlled by IAM policies.
+        . Global View doesn’t grant new permissions → it shows resources based on what the user already has access to.
+
+    6. Industry Standards
+✅      . Enterprises enable Global View for Ops teams to manage global infra.
+✅      . Use with Service Control Policies (SCPs) in AWS Organizations to block resource creation outside allowed regions.
+✅      . Combine with AWS Config Aggregator for compliance reporting across regions.
+✅      . Use Global View dashboards for cost + security audits.
+
+    7. Typical Corporate Use Cases
+        . Global Enterprises → manage hundreds of resources across US, EU, Asia regions.
+        . Finance/Healthcare → ensure compliance (e.g., only allowed regions).
+        . Ops Teams → detect orphaned EC2/RDS instances.
+        . Cost Management → shut down unused global resources.
+
+    ✅8. Summary:
+        AWS Global View = unified multi-region resource dashboard.
+            . Shows resources across all AWS regions/accounts.
+            . Helps with visibility, compliance, cost, and security management.
+            . Industry best practice = use Global View + AWS Config + SCPs for enterprise governance.

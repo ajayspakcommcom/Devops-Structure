@@ -1,0 +1,61 @@
+
+Amazon Aurora DSQL (Distributed SQL)
+
+    1. What is Aurora DSQL?
+        . An enhanced version of Amazon Aurora designed for globally distributed, high-scale workloads.
+        . It’s still Aurora (MySQL/PostgreSQL compatible) but extended with distributed SQL capabilities → meaning queries, writes, and replicas can work across multiple regions seamlessly.
+
+    2. Why Use It?
+        . Traditional Aurora = single region with optional cross-region read replicas.
+        . Aurora DSQL = true global database with:
+            . Distributed writes across regions.
+            . Stronger consistency across clusters.
+            . Lower latency for global apps.
+        . Designed for multi-region SaaS, fintech, gaming, and global e-commerce.
+
+    3. Core Features
+        . Multi-Region Active-Active Writes → unlike normal Aurora Global DB (which is write in 1 region, read in others).
+        . Distributed Transactions → ACID across regions.
+        . Automatic conflict detection & resolution (if same record updated in different regions).
+        . Synchronous replication between nodes in the same region, asynchronous across regions (with consistency options).
+        . Serverless Scaling (Aurora Serverless v2 + DSQL) → auto-scales clusters globally.
+
+    4. Security
+        . Encryption at rest (KMS) & in transit (TLS).
+        . Runs inside VPC with fine-grained IAM access.
+        . Audit logging for compliance (GDPR, PCI DSS, HIPAA).
+
+    5. Cost Model
+        . Same Aurora pricing model, but extra cost for:
+            . Multi-region replication.
+            . Cross-region write conflicts resolution overhead.
+        . Pay for:
+            . DB instance hours.
+            . I/O requests.
+            . Storage (auto-scaling up to 128TB).
+            . Backup storage.
+
+    6. Industry Standards
+        . Use Aurora Global DB (standard) when:
+            . You need read replicas across regions but writes only in one region.
+        . Use Aurora DSQL when:
+            . You need active-active writes across regions.
+            . You’re building global SaaS/multi-region apps.
+            . Best Practices:
+                . Plan conflict resolution strategy (last-writer-wins, app logic).
+                . Use Aurora Serverless v2 for unpredictable workloads.
+                . Combine with App Runner/EKS/ECS for multi-region app deployments.
+
+
+    7. Typical Corporate Use Cases
+        . FinTech → payment systems needing global write consistency.
+        . E-commerce → product inventory updated from multiple regions.
+        . Gaming → multiplayer game state across continents.
+        . SaaS Providers → multi-region customers with low-latency requirements.
+        . Healthcare → patient records synced globally.
+
+    8. Summary
+        . Aurora (Standard) = single-region HA + read scaling.
+        . Aurora Global DB = multi-region read replicas, single write region.
+        . Aurora DSQL = true distributed SQL DB with multi-region active-active writes.
+        . Industry best practice = use Aurora DSQL for global SaaS & mission-critical apps where latency and write availability matter.

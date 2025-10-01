@@ -1,0 +1,73 @@
+
+Amazon API Gateway – Key Pointers
+    
+    1. What is API Gateway?
+        . A fully managed service for creating, publishing, securing, and monitoring APIs at any scale.
+        . Supports both REST APIs and WebSocket APIs.
+        . Often used as the front door for applications → connects clients to backend services (Lambda, ECS/EKS, EC2, RDS, DynamoDB, etc.).
+
+    2. Why Use It?
+        . Eliminates heavy lifting of building secure, scalable API endpoints.
+        . Handles authentication, authorization, throttling, caching, monitoring.
+        . Scales automatically → from a few requests/sec to millions/sec.
+        . Supports multi-protocol (REST, HTTP, WebSocket) for real-time apps.
+
+    
+    3. Core Features
+        . API Types:
+            . REST API → full-featured, advanced API features.
+            . HTTP API → lightweight, cheaper, faster.
+            . WebSocket API → bidirectional, real-time communication.
+        . Security:
+            . IAM roles & policies.
+            . Cognito user pools (authentication).
+            . Lambda authorizers (custom auth).
+            . API keys & usage plans.
+        . Performance:
+            . Built-in caching (reduce backend load).
+            . Global endpoints with CloudFront integration.
+        . Monitoring:
+            . CloudWatch metrics, logs, alarms.
+            . X-Ray for tracing requests.
+
+    4. Integration with Backends
+        . AWS Lambda → serverless APIs.
+        . ECS/EKS/EC2 → microservices.
+        . DynamoDB / RDS → direct integrations.
+        . S3 → serve static content.
+
+    5. Security
+        . IAM → fine-grained access.
+        . WAF integration → block SQLi/XSS.
+        . TLS/HTTPS by default.
+        . Throttling + Quotas → prevent abuse.
+
+    6. Cost Model
+        . Pay-per-request:
+            . REST API → $3.50 per million calls.
+            . HTTP API → $1.00 per million calls.
+            . WebSocket API → $1.00 per million messages.
+        . Additional: caching, data transfer out.
+        . Free tier → 1M requests/month for 12 months.
+
+    7. Industry Standards
+    ✅ . Use HTTP API for simple, cost-efficient APIs.
+    ✅ . Use REST API for enterprise-grade features (API keys, usage plans, request validation).
+    ✅ . Use WebSocket API for chat apps, gaming, IoT real-time updates.
+    ✅ . Integrate with Cognito or custom Lambda authorizers for auth.
+    ✅ . Enable WAF + throttling for protection.
+    ✅ . Monitor with CloudWatch + X-Ray.
+    ✅ . Use stages (dev, test, prod) with versioning.
+
+    8. Typical Corporate Use Cases
+        . Serverless backends → Lambda + API Gateway.
+        . Microservices APIs → ECS/EKS behind API Gateway.
+        . IoT apps → real-time updates with WebSockets.
+        . Mobile/web apps → backend APIs with auth & rate limiting.
+        . B2B APIs → secure partner APIs with API keys & quotas.
+
+    9. Summary
+        . Amazon API Gateway = front door for APIs on AWS.
+            . Supports REST, HTTP, WebSocket APIs.
+            . Handles auth, caching, throttling, monitoring out of the box.
+            . Industry best practices = use HTTP API for cost savings, REST API for advanced features, WebSocket API for real-time, integrate with Cognito/Lambda for auth, protect with WAF + throttling.

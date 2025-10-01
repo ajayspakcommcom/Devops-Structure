@@ -1,0 +1,56 @@
+Amazon DocumentDB – Key Pointers
+
+    1. What is DocumentDB?
+        . A fully managed document database service.
+        . Designed to be MongoDB-compatible (works with MongoDB drivers & APIs).
+        . Stores data in JSON-like documents (flexible schema).
+        . Part of AWS’s NoSQL database family (like DynamoDB, Neptune, ElastiCache).
+
+    2. Why Use It?
+        . MongoDB workloads can migrate with minimal code changes.
+        . Fully managed → AWS handles patching, scaling, backups, HA.
+        . Useful when apps need flexible schemas, unlike relational DBs.
+
+    3. Core Features
+        . Scalable → up to 64TB storage, auto-growing.
+        . High availability → 3 replicas across 3 AZs.
+        . Read replicas → up to 15 for read scaling.
+        . Backup & Restore → Continuous backup to S3 + PITR (point-in-time recovery).
+        . Monitoring → CloudWatch metrics, Performance Insights.
+
+    4. Security
+        . Runs inside VPC for network isolation.
+        . Encryption at rest (KMS) + in transit (TLS).
+        . IAM integration for access management.
+        . Fine-grained database user authentication/authorization.
+
+    5. Cost Model
+        . Pay for:
+            . Instance hours (similar to RDS pricing tiers).
+            . Storage (per GB-month).
+            . I/O requests.
+            . Backup storage.
+        . No license cost (unlike MongoDB Enterprise).
+
+    6. Industry Standards
+        . Use DocumentDB when:
+            . You need MongoDB-compatible workloads with AWS-managed infra.
+            . Schema flexibility is required (storing varied JSON docs).
+            . Deploy Multi-AZ for production.
+            . Use read replicas for scaling queries.
+            . Store snapshots/backups in S3 for DR.
+            . Encrypt with KMS for compliance.
+            . Monitor with CloudWatch alarms (CPU, connections, IOPS).
+
+    7. Typical Corporate Use Cases
+        . Content Management Systems → flexible content models.
+        . Catalogs/E-commerce → products with varying attributes.
+        . IoT apps → device data stored as JSON docs.
+        . Mobile/Web Apps → session storage, profiles, settings.
+        . Analytics → ingest JSON event logs, analyze later.
+
+    8. Summary
+        . Amazon DocumentDB = MongoDB-compatible, fully managed document DB.
+            . Great for JSON/document-heavy workloads.
+            . Scales automatically, high availability built-in.
+            . Industry best practices = multi-AZ, replicas, encryption, CloudWatch monitoring.

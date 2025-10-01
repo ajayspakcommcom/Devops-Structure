@@ -1,0 +1,67 @@
+AWS Lambda – Key Pointers
+
+    1. What is Lambda?
+        . A serverless compute service.
+        . Runs code without provisioning or managing servers.
+        . You just provide the function → AWS executes it in response to events.
+        . Pay only for execution time (milliseconds) + requests.
+
+    2. Execution Model
+        . Supported runtimes: Node.js, Python, Java, Go, .NET, Ruby, custom runtimes with container images.
+        . Max memory: 128MB → 10GB.
+        . Max execution time: 15 minutes per invocation.
+        . Auto-scales instantly (hundreds/thousands of requests in parallel).
+
+    3. Triggers / Event Sources
+        Lambda can be triggered by:
+            . API Gateway → REST/GraphQL APIs.
+            . S3 → file upload event triggers processing.
+            . DynamoDB Streams → react to DB changes.
+            . Kinesis → real-time stream processing.
+            . SNS / SQS → async message/event processing.
+            . CloudWatch Events / EventBridge → cron jobs, event-driven apps.
+            . ALB → as a backend for HTTP requests.
+
+    4. Integration with Other AWS Services
+        . S3 + Lambda → Image/video processing on upload.
+        . DynamoDB + Lambda → Event-driven data processing.
+        . Step Functions + Lambda → Serverless workflows.
+        . CloudFormation/Terraform → Infrastructure as code.
+
+    5. Security
+        . Each Lambda has an IAM role → defines what resources it can access.
+        . Runs inside AWS-managed VPC by default, but can be attached to your VPC for private resources (RDS, EC2, etc.).
+        . Data encrypted at rest (KMS) and in transit (TLS).
+
+    6. Monitoring
+        . CloudWatch Logs → automatically captures logs (console.log, print, etc.).
+        . CloudWatch Metrics → invocations, duration, errors, throttles.
+        . X-Ray → tracing and debugging.
+
+    7. Cost Model
+        . Requests → $0.20 per 1M requests (first 1M free).
+        . Compute time → $0.00001667 per GB-second.
+        . Example: A function with 1GB memory running for 1s costs ~$0.0000167.
+        . Very cheap for event-driven workloads.
+
+    8. Best Practices / Industry Standards
+    ✅  . Keep functions small and focused (single responsibility).
+    ✅  . Use environment variables for config (not hardcoded).
+    ✅  . Package external dependencies efficiently (layering).
+    ✅  . Always configure timeouts & retries.
+    ✅  . Use Provisioned Concurrency for low-latency critical functions.
+    ✅  . Secure with least privilege IAM roles.
+    ✅  . Use Step Functions for long workflows instead of giant Lambda.
+
+    9. Typical Corporate Use Cases
+        . Web & Mobile Apps → Backend APIs (API Gateway + Lambda + DynamoDB).
+        . Data Processing → Resize images/videos on S3 upload.
+        . ETL / Analytics → Stream processing from Kinesis/DynamoDB.
+        . Automation → Cron jobs, infrastructure event handling.
+        . IoT → Device events processed in real-time.
+
+    10. Summary:
+        AWS Lambda = serverless compute.
+            . No servers, auto-scaling, pay per execution.
+            . Event-driven: integrates with almost all AWS services.
+            . Industry best practices: small functions, IAM least privilege, provisioned concurrency for latency-sensitive apps.

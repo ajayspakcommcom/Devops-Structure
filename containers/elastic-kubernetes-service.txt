@@ -1,0 +1,71 @@
+
+Amazon EKS – Key Pointers
+    1. What is EKS?
+        . A fully managed Kubernetes service on AWS.
+        . Lets you run Kubernetes clusters without managing control plane/masters.
+        . Works with both:
+           . EC2 worker nodes (you manage infra).
+           . Fargate (serverless pods).
+
+    2. Why Use EKS?
+        . Industry standard → many companies already use Kubernetes.
+        . Full Kubernetes API compatibility → migrate workloads easily.
+        . AWS manages control plane (HA, patched, scalable).
+        . Deep AWS integration: VPC, IAM, CloudWatch, ALB, Route53, ECR.
+
+    3. Core Components in AWS
+        . EKS Cluster → managed control plane.
+        . Worker Nodes → EC2 or Fargate running pods.
+        . ECR (Elastic Container Registry) → private container image store.
+        . Load Balancing → ALB, NLB, Gateway API.
+        . IAM Roles for Service Accounts (IRSA) → map K8s service accounts to IAM roles.
+
+    4. Networking
+        . Uses Amazon VPC CNI plugin → Pods get native VPC IPs.
+        . Supports Service Discovery with Route53.
+        . Ingress via ALB Ingress Controller or Nginx Ingress.
+
+    5. Scaling
+        . Cluster Autoscaler → scale EC2 worker nodes.
+        . Horizontal Pod Autoscaler (HPA) → scale pods by CPU/memory/metrics.
+        . Fargate Profiles → serverless pod scaling.
+
+    6. Security
+        . IAM integration → map IAM users/roles to Kubernetes RBAC.
+        . IRSA → fine-grained permissions per pod.
+        . KMS → encrypt secrets at rest.
+        . VPC isolation → deploy across multiple subnets/AZs.
+
+    7. Monitoring
+        . CloudWatch Container Insights → CPU, memory, pod metrics.
+        . CloudWatch Logs → logs from pods.
+        . X-Ray + OpenTelemetry → tracing.
+        . Popular 3rd-party tools: Prometheus + Grafana.
+
+    8. Cost Model
+        . EKS Control Plane → $0.10/hour (~$74/month per cluster).
+        . Worker Nodes → pay for EC2/Fargate.
+        . Additional: storage (EBS, EFS, S3), load balancers, CloudWatch.
+
+    9. Industry Standards
+        . Use Fargate for small/mixed workloads → serverless pods.
+        . Use EC2 worker nodes (with ASG + Spot) for large-scale workloads.
+        . Store images in ECR.
+        . Use ALB Ingress Controller for routing.
+        . Secure with IRSA (IAM roles per pod).
+        . Enable Cluster Autoscaler + HPA for elastic scaling.
+        . Monitor with Container Insights + Prometheus/Grafana.
+        . Deploy via IaC (Terraform, CDK) + CI/CD pipelines.
+
+    10. Typical Corporate Use Cases
+        . Microservices platforms → APIs, SaaS backends.
+        . Data processing → Spark, Flink on Kubernetes.
+        . ML/AI → Kubeflow pipelines.
+        . Hybrid Cloud → consistent workloads across on-prem + AWS.
+        . Enterprise apps → migration from on-prem Kubernetes/OpenShift.
+
+    11. Summary
+        Amazon EKS = managed Kubernetes on AWS.
+            . Run containers at scale with full K8s API.
+            . Industry best practices = IRSA + Autoscaling + ALB Ingress + CloudWatch/Prometheus monitoring.
+            . Use Fargate for simplicity, EC2 + Spot for cost efficiency.
