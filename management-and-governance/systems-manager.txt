@@ -1,0 +1,59 @@
+
+AWS Systems Manager – Key Pointers
+
+    1. What is Systems Manager?
+        . A management and operations service that provides a unified interface to view and control AWS resources and on-prem servers.
+        . Helps automate patching, configuration, compliance, and operational tasks.
+        . Often called the Swiss army knife of AWS operations.
+
+    2. Why Use It?
+        . Without SSM, you’d need multiple tools for patching, automation, and compliance.
+        . SSM provides:
+            . Centralized operations hub for AWS + on-prem.
+            . Automation of repetitive tasks (patching, deployments).
+            . Secure remote management (no SSH needed).
+            . Compliance reporting for enterprises.
+
+    3. Core Features
+        . Session Manager → Secure shell access to EC2/on-prem (no SSH keys, no open ports).
+        . Run Command → Execute commands across fleets (e.g., update software).
+        . Patch Manager → Automate patching for OS + applications.
+        . Automation Documents (SSM Docs) → Automate complex workflows.
+        . Parameter Store → Store config data & secrets (integrates with KMS).
+        . OpsCenter → Centralized view of operational issues.
+        . Inventory → Collect system metadata (apps, config, patches).
+        . State Manager → Enforce desired configuration state.
+        . Compliance → Ensure resources follow security baselines.
+
+    4. Security
+        . IAM policies control who can access/run SSM features.
+        . All sessions & commands logged to CloudTrail + CloudWatch Logs.
+        . Encryption of parameters/secrets with KMS.
+        . No need for SSH keys or bastion hosts → reduces attack surface.
+
+    5. Cost Model
+        . Many SSM features are free (Session Manager, Run Command, Parameter Store [standard]).
+        . Paid features:
+            . Advanced Parameter Store ($0.05 per advanced param/month).
+            . OpsCenter, Patch Manager, Compliance checks ($0.006–$0.01 per resource).
+            . Automation executions ($0.002 per step).
+
+    6. Industry Standards & Best Practices
+✅      . Use Session Manager instead of SSH → more secure & auditable.
+✅      . Store app configs in Parameter Store (encrypted with KMS).
+✅      . Automate patching with Patch Manager.
+✅      . Use State Manager for baseline compliance (e.g., CIS, PCI DSS).
+✅      . Centralize OpsCenter + CloudWatch Alarms for issue tracking.
+✅      . Aggregate SSM data across accounts via AWS Organizations.
+
+    7. Typical Corporate Use Cases
+        . DevOps → Automate deployments, patch servers.
+        . Security teams → Secure shell access + auditing.
+        . Enterprises → Compliance enforcement across thousands of servers.
+        . Hybrid IT → Manage on-prem + AWS with one tool.
+        . SaaS providers → Parameter Store for multi-tenant configs/secrets.
+
+    8. Summary
+        . AWS Systems Manager = operations + management hub for AWS & hybrid environments.
+            . Provides Session Manager, Patch Manager, Run Command, Parameter Store, Automation, Compliance.
+            . Best practices → replace SSH with Session Manager, automate patching, store configs in Parameter Store, enforce compliance with State Manager.

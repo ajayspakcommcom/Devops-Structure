@@ -1,0 +1,59 @@
+
+Amazon CloudWatch – Key Pointers
+
+    1. What is CloudWatch?
+        . A monitoring and observability service for AWS and applications.
+        . Collects and tracks:
+            . Metrics (CPU, memory, latency, custom app metrics)
+            . Logs (application/system logs)
+            . Events (real-time system events)
+            . Alarms & Dashboards for alerting and visualization.
+
+    2. Why Use It?
+        . Provides real-time visibility into AWS resources & applications.
+        . Helps with performance tuning, troubleshooting, and cost optimization.
+        . Integrates with automation (EventBridge, Lambda, Auto Scaling).
+
+    3. Core Features
+        . CloudWatch Metrics → Built-in + custom metrics.
+        . CloudWatch Alarms → Trigger actions (e.g., scale EC2, send SNS alerts).
+        . CloudWatch Logs → Centralized logging, query with Logs Insights.
+        . CloudWatch Events / EventBridge → Respond to system/application events.
+        . CloudWatch Dashboards → Custom views for monitoring apps.=
+        . CloudWatch Synthetics → Automated canary tests for API/website uptime.
+        . CloudWatch Contributor Insights → Analyze traffic contributors (e.g., top IPs hitting API).
+        . CloudWatch Application Insights → Detect issues in enterprise workloads.
+
+    4. Security
+        . IAM policies control who can view/edit dashboards/logs.
+        . Logs encrypted at rest with KMS.
+        . Can restrict access with VPC endpoints.
+
+    5. Cost Model
+        . Free Tier: 10 custom metrics + 5GB logs + 3 dashboards/month.
+        . Paid:
+            . $0.30 per custom metric/month.
+            . $0.50 per GB logs ingested, $0.03 per GB archived.
+            . $0.10 per alarm/month.
+            . Dashboards, synthetics, and logs queries billed separately.
+
+    6. Industry Standards & Best Practices
+✅      . Monitor all critical resources (EC2, RDS, Lambda, API Gateway, etc.).
+✅      . Set CloudWatch Alarms for performance thresholds (CPU > 80%, high error rate).
+✅      . Use Logs Insights to query structured/unstructured logs.
+✅      . Centralize logs from multiple accounts via CloudWatch Logs + AWS Organizations.
+✅      . Use dashboards per environment (dev/stage/prod).
+✅      . Integrate alarms with SNS, PagerDuty, Slack for alerting.
+✅      . Automate remediation with EventBridge → Lambda/SSM.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → Monitor API latency, error rates, checkout pipeline health.
+        . Financial services → Alert on unusual API activity or latency spikes.
+        . Healthcare → Ensure HIPAA-compliant workloads meet SLAs.
+        . Gaming → Monitor player session counts, backend servers.
+        . DevOps → Centralized logs for debugging + CI/CD integration.
+
+    8. Summary
+        . Amazon CloudWatch = AWS’s monitoring, logging, and observability hub.
+          . Provides metrics, logs, events, dashboards, alarms.
+          . Best practices → set alarms on critical metrics, centralize logs, use dashboards per environment, integrate with EventBridge for automation.

@@ -1,0 +1,54 @@
+
+AWS Config – Key Pointers
+
+    1. What is AWS Config?
+        . A continuous monitoring and compliance service.
+        . Tracks resource configurations over time and checks them against rules & compliance standards.
+        . Helps answer: “What resources exist? How are they configured? Are they compliant?”
+
+    2. Why Use It?
+        . Provides visibility → full inventory of AWS resources.
+        . Detects drift from security/compliance baselines.
+        . Helps with auditing (PCI DSS, HIPAA, SOC 2, ISO, etc.).
+        . Enables automatic remediation when resources violate policies.
+
+    3. Core Features
+        . Resource Inventory → complete list of AWS resources (EC2, S3, IAM, VPC, RDS, etc.).
+        . Configuration History → track changes over time.
+        . Compliance Rules:
+        . AWS managed rules (e.g., S3 buckets must not be public).
+            . Custom rules (using Lambda).
+            . Conformance Packs → pre-packaged rules for compliance standards (PCI DSS, CIS, HIPAA).
+        . Remediation → auto-fix issues (e.g., encrypt unencrypted EBS volumes).
+        . Multi-Account/Multi-Region Aggregation → centralize compliance across enterprise.
+
+    4. Security
+        . Fully integrated with IAM for access control.
+        . All activity logged in CloudTrail.
+        . Resource data encrypted (KMS).
+
+    5. Cost Model
+        . Pay per:
+            . Configuration item recorded ($0.003 per item).
+            . Active AWS Config rule ($0.001 per evaluation).
+        . Free tier: 100,000 configuration items recorded per month (first year).
+
+    6. Industry Standards & Best Practices
+        . Enable AWS Config at org-level (via AWS Organizations).
+    ✅  . Apply Conformance Packs (CIS, PCI, HIPAA) to enforce compliance.
+    ✅  . Automate remediation with SSM documents.
+     ✅ . Regularly audit S3 public access, IAM over-permissive policies, unencrypted EBS/RDS.
+     ✅ . Use Config Aggregator for central visibility across regions/accounts.
+     ✅ . Store Config data in S3 + Athena/QuickSight for custom reporting.
+
+    7. Typical Corporate Use Cases
+        . Financial services → prove PCI DSS compliance.
+        . Healthcare → HIPAA audits (encryption, access controls)
+        . Government → NIST/FedRAMP compliance validation.
+        . Enterprises → manage multi-account compliance.
+        . DevOps → track config drift between dev/staging/prod.
+
+    8. Summary
+        . AWS Config = compliance + configuration tracking service.
+            . Provides inventory, history, rules, remediation.
+            . Best practices → enable org-wide, apply conformance packs, auto-remediate, store history in S3 for audits.
