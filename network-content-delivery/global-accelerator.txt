@@ -1,0 +1,59 @@
+
+AWS Global Accelerator – Key Pointers
+
+    1. What is Global Accelerator?
+        . A networking service that improves the availability and performance of global applications.
+        . Provides two static anycast IP addresses → traffic automatically routes to the nearest healthy AWS endpoint.
+        . Built on the AWS global network (not the public internet) → faster, more reliable.
+
+    2. Why Use It?
+        . Consistent low-latency connections for users worldwide.
+        . Automatic failover to the next healthy region if one is down.
+        . Static IPs → no need to change DNS when endpoints change.
+        . Great for mission-critical, latency-sensitive apps.
+
+    3. Core Features
+        . Accelerated Traffic Routing: routes traffic via AWS global backbone network.
+        . Health Checks: continuously checks endpoints (EC2, ALB, NLB, EIP).
+        . Traffic Dialing: control % of traffic sent to each region (good for migrations or canary releases).
+        . DDoS Protection: integrated with AWS Shield.
+        . Endpoint Types Supported:
+            . Application Load Balancer (ALB)
+            . Network Load Balancer (NLB)
+            . Elastic IP addresses
+            . EC2 instances
+
+    4. Security
+        . Uses static anycast IPs (not changing with deployments).
+        . Shield Standard DDoS protection included.
+        . Works with WAF at the ALB level.
+        . IAM integration for management.
+
+    5. Cost Model
+        . Fixed hourly fee → $0.025 per accelerator-hour (~$18/month).
+        . Data transfer premium → per GB over the AWS backbone (varies by region).
+        . Still cheaper and more reliable than sending traffic over the public internet for global apps.
+
+    6. Industry Standards
+        . Use Global Accelerator when:
+            . You have global users (APIs, apps, SaaS).
+            . Need multi-region HA with automatic failover.
+            . Want static IPs instead of DNS-based routing.
+        . Best Practices:
+            . Combine with multi-region deployments (e.g., ALB in us-east-1 + eu-west-1).
+            . Use traffic dials for controlled rollouts (blue/green).
+            . Monitor with CloudWatch (latency, traffic, health status).
+            . Use with Route 53 latency-based routing for hybrid setups.
+
+    7. Typical Corporate Use Cases
+        . SaaS platforms → ensure low latency for customers worldwide.
+        . APIs & Mobile Apps → reduce latency spikes for global users.
+        . Gaming → connect players to the closest game server.
+        . Financial services → real-time apps needing sub-100ms latency.
+        . Healthcare/Government → compliance + high availability across regions.
+
+    8. Summary
+        . AWS Global Accelerator = global traffic director for apps.
+            . Provides static IPs, low-latency routing, automatic failover.
+            . Best for multi-region, mission-critical, latency-sensitive workloads.
+            . Industry best practice → deploy multi-region + use Global Accelerator for resilience + performance.

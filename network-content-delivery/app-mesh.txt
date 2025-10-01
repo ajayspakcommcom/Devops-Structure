@@ -1,0 +1,64 @@
+AWS App Mesh – Key Pointers
+
+    1. What is App Mesh?
+        . A service mesh that provides service-to-service communication management for microservices running on ECS, EKS, Fargate, and EC2.
+        . Uses Envoy proxy as a sidecar to manage all traffic.
+        . Provides observability, traffic routing, and security between services.
+
+    2. Why Use It?
+        . In microservices, managing service-to-service calls is complex (retries, timeouts, security, monitoring).
+        . App Mesh solves this by:
+            . Providing a standardized way for services to talk.
+            . Adding visibility into traffic.
+            . Enabling traffic control (blue/green, canary deployments).
+            . Enforcing security policies.
+
+    3. Core Features
+        . Traffic Management:
+            . Route requests between services.
+            . Canary & blue/green deployments.
+            . Weighted routing (e.g., 10% to v2, 90% to v1).
+        . Observability:
+            . Collect metrics (Prometheus, CloudWatch).
+            . Distributed tracing (X-Ray, Jaeger).
+            . Centralized logging.
+        . Security:
+            . mTLS (mutual TLS) for service-to-service encryption.
+            . Fine-grained IAM controls.
+        . Integration:
+            . Works with ECS, EKS, EC2.
+            . Connects to CI/CD pipelines for progressive deployments.
+    
+    4. Architecture Components
+        . Mesh → logical boundary for all services.
+        . Virtual Services → abstraction of a service (e.g., orders.svc.local).
+        . Virtual Nodes → actual task/pod running service.
+        . Virtual Routers → handle routing rules.
+        . Virtual Gateways → entry point to the mesh (like API Gateway for mesh traffic).
+    
+    5. Cost Model   
+        . AWS App Mesh itself = free.
+        . You pay for:
+            .   Envoy proxy resources (CPU/memory in ECS/EKS/EC2).
+            .   Data transfer + logging/monitoring (CloudWatch, X-Ray).
+
+    6. Industry Standards
+       . Use App Mesh for ECS/EKS microservices instead of building custom networking.
+✅     . Enable mTLS for zero-trust communication.
+✅     . Use CloudWatch + X-Ray + Prometheus for observability.
+✅     . Use weighted routing for canary/blue-green deployments.
+✅     . Keep routing logic in App Mesh, not in application code.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → microservices (orders, payments, inventory).
+        . Financial services → secure, auditable inter-service communication.
+        . Media/Streaming → dynamic traffic routing, resilient playback APIs.
+        . Gaming → low-latency microservices with monitoring.
+        . Enterprises → migrate from monolith → microservices with controlled rollout.
+
+    8. Summary
+        . AWS App Mesh = service mesh for ECS/EKS/EC2 microservices.
+            . Uses Envoy proxies for traffic management, observability, and security.
+            . Industry best practices → enable mTLS, use canary routing, centralize monitoring with CloudWatch/X-Ray/Prometheus.
+
+

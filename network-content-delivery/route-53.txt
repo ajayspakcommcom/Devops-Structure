@@ -1,0 +1,61 @@
+
+Amazon Route 53 – Key Pointers
+
+    1. What is Route 53?
+        . A highly available, scalable DNS service on AWS.
+            . Provides:
+                . Domain registration (buy/manage domains).
+                . DNS hosting (map names to AWS resources).
+                . Health checks & failover.
+                . Traffic routing policies (latency, geolocation, weighted, etc.).
+    
+    2. Why Use It?
+        . Connects users to AWS services (EC2, ALB, S3, CloudFront, API Gateway).
+        . Highly reliable (100% availability SLA).
+        . Integrates deeply with AWS infra + Global Accelerator.
+        . Advanced routing + failover for global apps.
+
+    3. Core Features
+        . DNS Service → Map domain → IP/Load Balancer/CloudFront.
+        . Domain Registration → Purchase/manage directly in Route 53.
+        . Routing Policies:
+           . Simple → 1:1 record.
+           . Weighted → split % traffic between multiple endpoints.
+           . Latency-based → route to region with lowest latency.
+           . Geolocation → route based on user’s location.
+           . Failover → send traffic to healthy endpoint.
+           . Multi-value → like round-robin DNS with health checks.
+        . Health Checks → automatic failover if endpoint unhealthy.
+        . Private Hosted Zones → DNS for resources inside VPC only.
+
+    4. Security
+        . DNSSEC support for domain security.
+        . IAM policies to manage hosted zones.
+        . Works with VPC + PrivateLink for internal DNS.
+
+    5. Cost Model
+        . $0.50/month per hosted zone (first 25).
+        . $0.40/month per hosted zone (after 25).
+        . $0.40 per million queries (standard).
+        . Health checks billed separately.
+        . Domain registration pricing varies by TLD.
+
+    6. Industry Standards
+       . Always enable health checks + failover routing for HA.
+    ✅ . Use latency-based routing for global apps.
+    ✅ . Use geolocation routing for compliance/localization.
+    ✅ . Use private hosted zones for VPC-only workloads.
+    ✅ . Use Route 53 + ACM (certificates) for HTTPS endpoints.
+    ✅ . Combine with Global Accelerator for static IP + routing optimization.
+
+    7. Typical Corporate Use Cases
+        . E-commerce → high-availability DNS for websites + APIs.
+        . SaaS apps → global traffic routing (weighted/canary).
+        . Gaming → direct users to nearest game server.
+        . Financial services → compliance with geo-routing.
+        . Hybrid Cloud → private hosted zones for internal DNS resolution.
+
+    8. Summary
+        . Amazon Route 53 = AWS’s global DNS & domain management service.
+            . Provides DNS hosting, domain registration, routing policies, failover.
+            . Best practices → health checks, failover, latency/geolocation routing, private hosted zones.
